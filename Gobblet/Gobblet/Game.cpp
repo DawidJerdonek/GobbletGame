@@ -96,6 +96,8 @@ void Game::processKeys(sf::Event t_event)
 /// <param name="t_deltaTime">time interval per frame</param>
 void Game::update(sf::Time t_deltaTime)
 {
+	m_grid.update(m_window);
+
 	if (m_exitGame)
 	{
 		m_window.close();

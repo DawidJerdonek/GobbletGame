@@ -7,24 +7,28 @@ Player::Player()
 	largePiece.setRadius(100);
 	largePiece.setOutlineThickness(2);
 	largePiece.setOutlineColor(sf::Color::Black);
-	largePiece.setPosition(200,200);
+	largePiece.setOrigin(largePiece.getGlobalBounds().width / 2, largePiece.getGlobalBounds().height / 2);
+	largePiece.setPosition(200, 200);
 
 	mediumPiece.setFillColor(sf::Color::White);
 	mediumPiece.setRadius(80);
 	mediumPiece.setOutlineThickness(2);
 	mediumPiece.setOutlineColor(sf::Color::Black);
+	mediumPiece.setOrigin(mediumPiece.getGlobalBounds().width / 2, mediumPiece.getGlobalBounds().height / 2);
 	mediumPiece.setPosition(200, 400);
 
 	smallPiece.setFillColor(sf::Color::White);
 	smallPiece.setRadius(60);
 	smallPiece.setOutlineThickness(2);
 	smallPiece.setOutlineColor(sf::Color::Black);
+	smallPiece.setOrigin(smallPiece.getGlobalBounds().width / 2, smallPiece.getGlobalBounds().height / 2);
 	smallPiece.setPosition(200, 600);
 
 	tinyPiece.setFillColor(sf::Color::White);
 	tinyPiece.setRadius(40);
 	tinyPiece.setOutlineThickness(2);
 	tinyPiece.setOutlineColor(sf::Color::Black);
+	tinyPiece.setOrigin(tinyPiece.getGlobalBounds().width / 2, tinyPiece.getGlobalBounds().height / 2);
 	tinyPiece.setPosition(200, 800);
 }
 

@@ -3,7 +3,7 @@
 
 Cell* Grid::at(int t_index)
 {
-	int x = t_index % xAmountCells;
+	int x = t_index % XAmountCells;
 	int y = t_index / YAmountCells;
 
 	return &cellGrid[x][y];
@@ -30,18 +30,18 @@ void Grid::setupGrid()
 
 	for (int index = 0; index < TotalCells; index++)
 	{
-		int x = index % xAmountCells;
+		int x = index % XAmountCells;
 		int y = index / YAmountCells;
 
 		at(index)->x = x;
 		at(index)->y = y;
-		at(index)->m_id = x + (y * xAmountCells);
+		at(index)->m_id = x + (y * XAmountCells);
 		
 
-		at(index)->cellBody.setFillColor(sf::Color(150,78,0,255));
+		at(index)->cellBody.setFillColor(defaultColor);
 
-		at(index)->cellBody.setSize(sf::Vector2f(xRes / xAmountCells - 50, yRes / YAmountCells - 50));
-		at(index)->cellBody.setPosition((xRes / xAmountCells) * x + 25, (yRes / YAmountCells) * y + 25);
+		at(index)->cellBody.setSize(sf::Vector2f((xRes / 2) / XAmountCells, yRes / YAmountCells));
+		at(index)->cellBody.setPosition(offset.x + ((xRes / 2) / XAmountCells) * x, offset.y + (yRes / YAmountCells) * y);
 		at(index)->idText.setPosition(at(index)->cellBody.getPosition());
 		at(index)->center = sf::Vector2f(at(index)->cellBody.getPosition().x + (at(index)->cellBody.getGlobalBounds().width / 2), at(index)->cellBody.getPosition().y + (at(index)->cellBody.getGlobalBounds().height / 2));
 		at(index)->idText.setFont(idFont);
@@ -78,4 +78,22 @@ void Grid::draw(sf::RenderWindow& m_window)
 void Grid::reset()
 {
 
+}
+
+void Grid::update(sf::RenderWindow &t_window)
+{
+	for (int y = 0; y < YAmountCells; y++)
+	{
+		for (int x = 0; x < XAmountCells; x++)
+		{
+			if (cellGrid[x][y].cellBody.getGlobalBounds().contains((sf::Vector2f)sf::Mouse::getPosition(t_window))) 
+			{
+				cellGrid[x][y].cellBody.setFillColor(highlightedColor);
+			}
+			else 
+			{
+				cellGrid[x][y].cellBody.setFillColor(defaultColor);
+			}
+		}
+	}
 }

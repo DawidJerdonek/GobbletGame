@@ -7,25 +7,29 @@ NPC::NPC()
 	largePiece.setRadius(100);
 	largePiece.setOutlineThickness(2);
 	largePiece.setOutlineColor(sf::Color::White);
-	largePiece.setPosition(1600, 200);
+	largePiece.setOrigin(largePiece.getGlobalBounds().width / 2, largePiece.getGlobalBounds().height / 2);
+	largePiece.setPosition(1450, 200);
 
 	mediumPiece.setFillColor(sf::Color::Black);
 	mediumPiece.setRadius(80);
 	mediumPiece.setOutlineThickness(2);
 	mediumPiece.setOutlineColor(sf::Color::White);
-	mediumPiece.setPosition(1600, 400);
+	mediumPiece.setOrigin(mediumPiece.getGlobalBounds().width / 2, mediumPiece.getGlobalBounds().height / 2);
+	mediumPiece.setPosition(1450, 400);
 
 	smallPiece.setFillColor(sf::Color::Black);
 	smallPiece.setRadius(60);
 	smallPiece.setOutlineThickness(2);
 	smallPiece.setOutlineColor(sf::Color::White);
-	smallPiece.setPosition(1600, 600);
+	smallPiece.setOrigin(smallPiece.getGlobalBounds().width / 2, smallPiece.getGlobalBounds().height / 2);
+	smallPiece.setPosition(1450, 600);
 
 	tinyPiece.setFillColor(sf::Color::Black);
 	tinyPiece.setRadius(40);
 	tinyPiece.setOutlineThickness(2);
 	tinyPiece.setOutlineColor(sf::Color::White);
-	tinyPiece.setPosition(1600, 800);
+	tinyPiece.setOrigin(tinyPiece.getGlobalBounds().width / 2, tinyPiece.getGlobalBounds().height / 2);
+	tinyPiece.setPosition(1450, 800);
 }
 
 NPC::~NPC()
