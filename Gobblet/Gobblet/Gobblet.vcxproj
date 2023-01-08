@@ -23,12 +23,16 @@
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="Grid.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="NPC.cpp" />
+    <ClCompile Include="Player.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Cell.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="GLOBALS.h" />
     <ClInclude Include="Grid.h" />
+    <ClInclude Include="NPC.h" />
+    <ClInclude Include="Player.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="ASSETS\IMAGES\SFML-LOGO.png">

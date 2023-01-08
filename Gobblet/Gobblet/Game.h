@@ -11,6 +11,8 @@
 /// </summary>
 #include <SFML/Graphics.hpp>
 #include "Grid.h"
+#include "Player.h"
+#include "NPC.h"
 #include "GLOBALS.h"
 
 class Game
@@ -34,6 +36,8 @@ private:
 	bool m_exitGame; // control exiting game
 
 	Grid m_grid;
+	Player m_player;
+	NPC m_npc;
 };
 
 #endif // !GAME_HPP

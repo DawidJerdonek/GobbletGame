@@ -109,5 +109,7 @@ void Game::render()
 {
 	m_window.clear(sf::Color::Black);
 	m_grid.draw(m_window);
+	m_player.render(m_window);
+	m_npc.render(m_window);
 	m_window.display();
 }
