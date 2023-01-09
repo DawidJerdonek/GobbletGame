@@ -19,6 +19,7 @@ Game::Game() :
 	m_exitGame{false} //when true game will exit
 {
 	m_grid.setupGrid();
+	setupInitialPositions();
 }
 
 /// <summary>
@@ -97,7 +98,10 @@ void Game::processKeys(sf::Event t_event)
 void Game::update(sf::Time t_deltaTime)
 {
 	m_grid.update(m_window);
-	m_player.update(m_window, m_isPlayersTurn);
+	for (int i = 0; i < 3; i++)
+	{
+		m_player[i].update(m_window, m_isPlayersTurn);
+	}
 	//m_npc.update(m_isPlayersTurn);
 
 	snapBoardPieces();
@@ -114,44 +118,82 @@ void Game::snapBoardPieces()
 	{
 		for (int x = 0; x < m_grid.XAmountCells; x++)
 		{
-			if (m_grid.cellGrid[x][y].cellBody.getGlobalBounds().contains(m_player.m_largePiece.getPosition()) && !m_grid.cellGrid[x][y].IsOccupiedByNPC && !m_grid.cellGrid[x][y].IsOccupiedByPlayer)
+			for (int i = 0; i < 3; i++)
 			{
-				if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Left) == false)
+				if (m_grid.cellGrid[x][y].cellBody.getGlobalBounds().contains(m_player[i].m_largePiece.getPosition()) && !m_grid.cellGrid[x][y].IsOccupiedByNPC && !m_grid.cellGrid[x][y].IsOccupiedByPlayer)
 				{
-					m_player.m_largePiece.setPosition(m_grid.cellGrid[x][y].center.x, m_grid.cellGrid[x][y].center.y);
-					m_grid.cellGrid[x][y].IsOccupiedByPlayer = true;
-					m_isPlayersTurn = false;
+					if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Left) == false)
+					{
+						m_player[i].m_largePiece.setPosition(m_grid.cellGrid[x][y].center.x, m_grid.cellGrid[x][y].center.y);
+						m_grid.cellGrid[x][y].IsOccupiedByPlayer = true;
+						m_isPlayersTurn = false;
+					}
 				}
-			}
-			else if (m_grid.cellGrid[x][y].cellBody.getGlobalBounds().contains(m_player.m_mediumPiece.getPosition()) && !m_grid.cellGrid[x][y].IsOccupiedByNPC && !m_grid.cellGrid[x][y].IsOccupiedByPlayer)
-			{
-				if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Left) == false)
+				else if (m_grid.cellGrid[x][y].cellBody.getGlobalBounds().contains(m_player[i].m_mediumPiece.getPosition()) && !m_grid.cellGrid[x][y].IsOccupiedByNPC && !m_grid.cellGrid[x][y].IsOccupiedByPlayer)
 				{
-					m_player.m_mediumPiece.setPosition(m_grid.cellGrid[x][y].center.x, m_grid.cellGrid[x][y].center.y);
-					m_grid.cellGrid[x][y].IsOccupiedByPlayer = true;
-					m_isPlayersTurn = false;
+					if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Left) == false)
+					{
+						m_player[i].m_mediumPiece.setPosition(m_grid.cellGrid[x][y].center.x, m_grid.cellGrid[x][y].center.y);
+						m_grid.cellGrid[x][y].IsOccupiedByPlayer = true;
+						m_isPlayersTurn = false;
+					}
 				}
-			}
-			else if (m_grid.cellGrid[x][y].cellBody.getGlobalBounds().contains(m_player.m_smallPiece.getPosition()) && !m_grid.cellGrid[x][y].IsOccupiedByNPC && !m_grid.cellGrid[x][y].IsOccupiedByPlayer)
-			{
-				if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Left) == false)
+				else if (m_grid.cellGrid[x][y].cellBody.getGlobalBounds().contains(m_player[i].m_smallPiece.getPosition()) && !m_grid.cellGrid[x][y].IsOccupiedByNPC && !m_grid.cellGrid[x][y].IsOccupiedByPlayer)
 				{
-					m_player.m_smallPiece.setPosition(m_grid.cellGrid[x][y].center.x, m_grid.cellGrid[x][y].center.y);
-					m_grid.cellGrid[x][y].IsOccupiedByPlayer = true;
-					m_isPlayersTurn = false;
+					if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Left) == false)
+					{
+						m_player[i].m_smallPiece.setPosition(m_grid.cellGrid[x][y].center.x, m_grid.cellGrid[x][y].center.y);
+						m_grid.cellGrid[x][y].IsOccupiedByPlayer = true;
+						m_isPlayersTurn = false;
+					}
 				}
-			}
-			else if (m_grid.cellGrid[x][y].cellBody.getGlobalBounds().contains(m_player.m_tinyPiece.getPosition()) && !m_grid.cellGrid[x][y].IsOccupiedByNPC && !m_grid.cellGrid[x][y].IsOccupiedByPlayer)
-			{
-				if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Left) == false)
+				else if (m_grid.cellGrid[x][y].cellBody.getGlobalBounds().contains(m_player[i].m_tinyPiece.getPosition()) && !m_grid.cellGrid[x][y].IsOccupiedByNPC && !m_grid.cellGrid[x][y].IsOccupiedByPlayer)
 				{
-					m_player.m_tinyPiece.setPosition(m_grid.cellGrid[x][y].center.x, m_grid.cellGrid[x][y].center.y);
-					m_grid.cellGrid[x][y].IsOccupiedByPlayer = true;
-					m_isPlayersTurn = false;
+					if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Left) == false)
+					{
+						m_player[i].m_tinyPiece.setPosition(m_grid.cellGrid[x][y].center.x, m_grid.cellGrid[x][y].center.y);
+						m_grid.cellGrid[x][y].IsOccupiedByPlayer = true;
+						m_isPlayersTurn = false;
+					}
 				}
 			}
 		}
 	}
+}
+
+void Game::setupInitialPositions()
+{
+	/// <summary>
+	/// Player Initial Positions
+	/// </summary>
+	m_player[0].m_largePiece.setPosition(200, 300);
+	m_player[0].m_mediumPiece.setPosition(200, 300);
+	m_player[0].m_smallPiece.setPosition(200, 300);
+	m_player[0].m_tinyPiece.setPosition(200, 300);
+	m_player[1].m_largePiece.setPosition(200, 600);
+	m_player[1].m_mediumPiece.setPosition(200, 600);
+	m_player[1].m_smallPiece.setPosition(200, 600);
+	m_player[1].m_tinyPiece.setPosition(200, 600);
+	m_player[2].m_largePiece.setPosition(200, 900);
+	m_player[2].m_mediumPiece.setPosition(200, 900);
+	m_player[2].m_smallPiece.setPosition(200, 900);
+	m_player[2].m_tinyPiece.setPosition(200, 900);
+
+	/// <summary>
+	/// NPC Initial Positions
+	/// </summary>
+	/// 	m_player[0].m_largePiece.setPosition(200, 300);
+	m_npc[0].m_mediumPiece.setPosition(1450, 300);
+	m_npc[0].m_smallPiece.setPosition(1450, 300);
+	m_npc[0].m_tinyPiece.setPosition(1450, 300);
+	m_npc[1].m_largePiece.setPosition(1450, 600);
+	m_npc[1].m_mediumPiece.setPosition(1450, 600);
+	m_npc[1].m_smallPiece.setPosition(1450, 600);
+	m_npc[1].m_tinyPiece.setPosition(1450, 600);
+	m_npc[2].m_largePiece.setPosition(1450, 900);
+	m_npc[2].m_mediumPiece.setPosition(1450, 900);
+	m_npc[2].m_smallPiece.setPosition(1450, 900);
+	m_npc[2].m_tinyPiece.setPosition(1450, 900);
 }
 
 /// <summary>
@@ -161,7 +203,13 @@ void Game::render()
 {
 	m_window.clear(sf::Color::Black);
 	m_grid.draw(m_window);
-	m_player.render(m_window);
-	m_npc.render(m_window);
+	for (int i = 0; i < 3; i++)
+	{
+		m_player[i].render(m_window);
+	}
+	for (int i = 0; i < 3; i++)
+	{
+		m_npc[i].render(m_window);
+	}
 	m_window.display();
 }

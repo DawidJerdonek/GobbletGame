@@ -31,6 +31,7 @@ private:
 	void processKeys(sf::Event t_event);
 	void update(sf::Time t_deltaTime);
 	void snapBoardPieces();
+	void setupInitialPositions();
 	void render();
 
 	sf::RenderWindow m_window; // main SFML window
@@ -38,8 +39,11 @@ private:
 	bool m_isPlayersTurn = true;
 
 	Grid m_grid;
-	Player m_player;
-	NPC m_npc;
+
+	Player m_player[3];//3 sets of sized pieces
+
+
+	NPC m_npc[3];//3 sets of sized pieces
 };
 
 #endif // !GAME_HPP

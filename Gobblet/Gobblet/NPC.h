@@ -18,10 +18,10 @@ public:
 	void movePlayer(sf::Vector2f& currentPos, Grid& t_grid);
 	void unMovePlayer(sf::Vector2f& currentPos, Grid& t_grid);
 
-	sf::CircleShape largePiece;
-	sf::CircleShape mediumPiece;
-	sf::CircleShape smallPiece;
-	sf::CircleShape tinyPiece;
+	sf::CircleShape m_largePiece;
+	sf::CircleShape m_mediumPiece;
+	sf::CircleShape m_smallPiece;
+	sf::CircleShape m_tinyPiece;
 
 	bool largePieceInPlay = false;
 	bool mediumPieceInPlay = false;
