@@ -3,47 +3,98 @@
 
 Player::Player()
 {
-	largePiece.setFillColor(sf::Color::White);
-	largePiece.setRadius(100);
-	largePiece.setOutlineThickness(2);
-	largePiece.setOutlineColor(sf::Color::Black);
-	largePiece.setOrigin(largePiece.getGlobalBounds().width / 2, largePiece.getGlobalBounds().height / 2);
-	largePiece.setPosition(200, 200);
+	m_largePiece.setFillColor(sf::Color::White);
+	m_largePiece.setRadius(100);
+	m_largePiece.setOutlineThickness(2);
+	m_largePiece.setOutlineColor(sf::Color::Black);
+	m_largePiece.setOrigin(m_largePiece.getGlobalBounds().width / 2, m_largePiece.getGlobalBounds().height / 2);
+	m_largePiece.setPosition(200, 200);
 
-	mediumPiece.setFillColor(sf::Color::White);
-	mediumPiece.setRadius(80);
-	mediumPiece.setOutlineThickness(2);
-	mediumPiece.setOutlineColor(sf::Color::Black);
-	mediumPiece.setOrigin(mediumPiece.getGlobalBounds().width / 2, mediumPiece.getGlobalBounds().height / 2);
-	mediumPiece.setPosition(200, 400);
+	m_mediumPiece.setFillColor(sf::Color::White);
+	m_mediumPiece.setRadius(80);
+	m_mediumPiece.setOutlineThickness(2);
+	m_mediumPiece.setOutlineColor(sf::Color::Black);
+	m_mediumPiece.setOrigin(m_mediumPiece.getGlobalBounds().width / 2, m_mediumPiece.getGlobalBounds().height / 2);
+	m_mediumPiece.setPosition(200, 400);
 
-	smallPiece.setFillColor(sf::Color::White);
-	smallPiece.setRadius(60);
-	smallPiece.setOutlineThickness(2);
-	smallPiece.setOutlineColor(sf::Color::Black);
-	smallPiece.setOrigin(smallPiece.getGlobalBounds().width / 2, smallPiece.getGlobalBounds().height / 2);
-	smallPiece.setPosition(200, 600);
+	m_smallPiece.setFillColor(sf::Color::White);
+	m_smallPiece.setRadius(60);
+	m_smallPiece.setOutlineThickness(2);
+	m_smallPiece.setOutlineColor(sf::Color::Black);
+	m_smallPiece.setOrigin(m_smallPiece.getGlobalBounds().width / 2, m_smallPiece.getGlobalBounds().height / 2);
+	m_smallPiece.setPosition(200, 600);
 
-	tinyPiece.setFillColor(sf::Color::White);
-	tinyPiece.setRadius(40);
-	tinyPiece.setOutlineThickness(2);
-	tinyPiece.setOutlineColor(sf::Color::Black);
-	tinyPiece.setOrigin(tinyPiece.getGlobalBounds().width / 2, tinyPiece.getGlobalBounds().height / 2);
-	tinyPiece.setPosition(200, 800);
+	m_tinyPiece.setFillColor(sf::Color::White);
+	m_tinyPiece.setRadius(40);
+	m_tinyPiece.setOutlineThickness(2);
+	m_tinyPiece.setOutlineColor(sf::Color::Black);
+	m_tinyPiece.setOrigin(m_tinyPiece.getGlobalBounds().width / 2, m_tinyPiece.getGlobalBounds().height / 2);
+	m_tinyPiece.setPosition(200, 800);
+
+
+	m_mousePositionShape.setFillColor(sf::Color::Red);
+	m_mousePositionShape.setRadius(10);
+	m_mousePositionShape.setOutlineThickness(2);
+	m_mousePositionShape.setOutlineColor(sf::Color::Green);
+	m_mousePositionShape.setOrigin(m_mousePositionShape.getGlobalBounds().width / 2, m_mousePositionShape.getGlobalBounds().height / 2);
+	m_mousePositionShape.setPosition(100, 100);
 }
 
 Player::~Player()
 {
 }
 
-void Player::update()
+void Player::update(sf::RenderWindow& t_window)
 {
+	sf::Vector2i mousePosition;
+	mousePosition = sf::Mouse::getPosition(t_window);
+	m_mouseLocation = { static_cast<float>(mousePosition.x),static_cast<float>(mousePosition.y) };
+
+	m_mousePositionShape.setPosition(m_mouseLocation);
+
+	if (m_playerTurn)
+	{
+		if (m_mousePositionShape.getGlobalBounds().intersects(m_largePiece.getGlobalBounds()))
+		{
+			if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Left))
+			{
+				m_largePiece.setPosition(m_mousePositionShape.getPosition());
+			}
+
+		}
+		else if (m_mousePositionShape.getGlobalBounds().intersects(m_mediumPiece.getGlobalBounds()))
+		{
+			if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Left))
+			{
+				m_mediumPiece.setPosition(m_mousePositionShape.getPosition());
+			}
+
+		}
+		else if (m_mousePositionShape.getGlobalBounds().intersects(m_smallPiece.getGlobalBounds()))
+		{
+			if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Left))
+			{
+				m_smallPiece.setPosition(m_mousePositionShape.getPosition());
+			}
+
+		}
+		else if (m_mousePositionShape.getGlobalBounds().intersects(m_tinyPiece.getGlobalBounds()))
+		{
+			if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Left))
+			{
+				m_tinyPiece.setPosition(m_mousePositionShape.getPosition());
+			}
+
+		}
+	}
+	m_playerTurn = true; //Later switch depending on current turn
 }
 
 void Player::render(sf::RenderWindow& t_window)
 {
-	t_window.draw(largePiece);
-	t_window.draw(mediumPiece);
-	t_window.draw(smallPiece);
-	t_window.draw(tinyPiece);
+	t_window.draw(m_tinyPiece);
+	t_window.draw(m_smallPiece);
+	t_window.draw(m_mediumPiece);
+	t_window.draw(m_largePiece);
+	t_window.draw(m_mousePositionShape);
 }

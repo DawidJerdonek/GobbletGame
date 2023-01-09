@@ -38,6 +38,8 @@ NPC::~NPC()
 
 void NPC::update()
 {
+
+
 }
 
 void NPC::render(sf::RenderWindow& t_window)

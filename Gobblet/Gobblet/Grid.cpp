@@ -1,6 +1,7 @@
 ﻿#include "Grid.h"
 #include "Cell.h"
 
+
 Cell* Grid::at(int t_index)
 {
 	int x = t_index % XAmountCells;
