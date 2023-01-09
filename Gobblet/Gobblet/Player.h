@@ -7,7 +7,7 @@ public:
 	Player();
 	~Player();
 
-	void update(sf::RenderWindow& t_window);
+	void update(sf::RenderWindow& t_window, bool& t_playersTurn);
 	void render(sf::RenderWindow& t_window);
 
 
@@ -17,7 +17,6 @@ public:
 	sf::CircleShape m_smallPiece;
 	sf::CircleShape m_tinyPiece;
 
-	bool m_playerTurn = true;
 	sf::Vector2f m_mouseLocation;
 	sf::CircleShape m_mousePositionShape;
 };

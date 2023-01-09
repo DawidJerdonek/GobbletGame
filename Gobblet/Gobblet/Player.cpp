@@ -44,7 +44,7 @@ Player::~Player()
 {
 }
 
-void Player::update(sf::RenderWindow& t_window)
+void Player::update(sf::RenderWindow& t_window, bool& t_playersTurn)
 {
 	sf::Vector2i mousePosition;
 	mousePosition = sf::Mouse::getPosition(t_window);
@@ -52,7 +52,7 @@ void Player::update(sf::RenderWindow& t_window)
 
 	m_mousePositionShape.setPosition(m_mouseLocation);
 
-	if (m_playerTurn)
+	if (t_playersTurn)
 	{
 		if (m_mousePositionShape.getGlobalBounds().intersects(m_largePiece.getGlobalBounds()))
 		{
@@ -87,7 +87,6 @@ void Player::update(sf::RenderWindow& t_window)
 
 		}
 	}
-	m_playerTurn = true; //Later switch depending on current turn
 }
 
 void Player::render(sf::RenderWindow& t_window)

@@ -13,10 +13,11 @@ public:
 	int x;
 	int y;
 
-	int m_previousCellId{ -1 };
-
 	sf::Text idText;
 	sf::Vector2f center;
+
+	bool IsOccupiedByPlayer = false;
+	bool IsOccupiedByNPC = false;
 
 	bool m_isMarked{ false };
 	int m_parentCellId;
