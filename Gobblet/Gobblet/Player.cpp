@@ -32,12 +32,12 @@ Player::Player()
 	m_tinyPiece.setPosition(200, 800);
 
 
-	m_mousePositionShape.setFillColor(sf::Color::Red);
+	/*m_mousePositionShape.setFillColor(sf::Color::Red);
 	m_mousePositionShape.setRadius(10);
 	m_mousePositionShape.setOutlineThickness(2);
 	m_mousePositionShape.setOutlineColor(sf::Color::Green);
 	m_mousePositionShape.setOrigin(m_mousePositionShape.getGlobalBounds().width / 2, m_mousePositionShape.getGlobalBounds().height / 2);
-	m_mousePositionShape.setPosition(100, 100);
+	m_mousePositionShape.setPosition(100, 100);*/
 }
 
 Player::~Player()
@@ -50,56 +50,36 @@ void Player::update(sf::RenderWindow& t_window, bool& t_playersTurn)
 	mousePosition = sf::Mouse::getPosition(t_window);
 	m_mouseLocation = { static_cast<float>(mousePosition.x),static_cast<float>(mousePosition.y) };
 
-	m_mousePositionShape.setPosition(m_mouseLocation);
+	//m_mousePositionShape.setPosition(m_mouseLocation);
 	if (t_playersTurn)
 	{
-		if (m_mousePositionShape.getGlobalBounds().intersects(m_largePiece.getGlobalBounds()))
+		if (m_largePiece.getGlobalBounds().contains(m_mouseLocation))
 		{
 			if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Left))
 			{
-				m_largePiece.setPosition(m_mousePositionShape.getPosition());
+				m_largePiece.setPosition(m_mouseLocation);
 			}
-			//else if (m_pieceSnapped == false)
-			//{
-			//	m_largePiece.setPosition(m_startPosition);
-			//}
-
 		}
-		else if (m_mousePositionShape.getGlobalBounds().intersects(m_mediumPiece.getGlobalBounds()))
+		else if (m_mediumPiece.getGlobalBounds().contains(m_mouseLocation))
 		{
 			if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Left))
 			{
-				m_mediumPiece.setPosition(m_mousePositionShape.getPosition());
+				m_mediumPiece.setPosition(m_mouseLocation);
 			}
-			//else if (m_pieceSnapped == false)
-			//{
-			//	m_mediumPiece.setPosition(200, 300);
-			//}
-
 		}
-		else if (m_mousePositionShape.getGlobalBounds().intersects(m_smallPiece.getGlobalBounds()))
+		else if (m_smallPiece.getGlobalBounds().contains(m_mouseLocation))
 		{
 			if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Left))
 			{
-				m_smallPiece.setPosition(m_mousePositionShape.getPosition());
+				m_smallPiece.setPosition(m_mouseLocation);
 			}
-			//else if (m_pieceSnapped == false)
-			//{
-			//	m_smallPiece.setPosition(200, 300);
-			//}
-
 		}
-		else if (m_mousePositionShape.getGlobalBounds().intersects(m_tinyPiece.getGlobalBounds()))
+		else if (m_tinyPiece.getGlobalBounds().contains(m_mouseLocation))
 		{
 			if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Left))
 			{
-				m_tinyPiece.setPosition(m_mousePositionShape.getPosition());
+				m_tinyPiece.setPosition(m_mouseLocation);
 			}
-			//else if(m_pieceSnapped == false)
-			//{
-			//	m_tinyPiece.setPosition(200,300);
-			//}
-
 		}
 	}
 }
