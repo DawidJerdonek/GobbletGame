@@ -40,10 +40,11 @@ private:
 
 	Grid m_grid;
 
-	Player m_player[3];//3 sets of sized pieces
+	Player m_player[3]; //3 sets of sized pieces
+	//Player m_player2[3]; //For Player vs Player mode
 
-
-	NPC m_npc[3];//3 sets of sized pieces
+	NPC m_npc[3]; //3 sets of sized pieces
+	//NPC m_npc2[3] //For AI vs AI mode
 };
 
 #endif // !GAME_HPP

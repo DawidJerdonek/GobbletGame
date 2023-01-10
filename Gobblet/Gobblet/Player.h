@@ -18,7 +18,6 @@ public:
 	sf::CircleShape m_tinyPiece;
 
 	sf::Vector2f m_mouseLocation;
-	sf::CircleShape m_mousePositionShape;
 
 	sf::Vector2f m_startPosition;
 	bool m_pieceSnapped = false;

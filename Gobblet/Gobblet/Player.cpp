@@ -31,13 +31,6 @@ Player::Player()
 	m_tinyPiece.setOrigin(m_tinyPiece.getGlobalBounds().width / 2, m_tinyPiece.getGlobalBounds().height / 2);
 	m_tinyPiece.setPosition(200, 800);
 
-
-	/*m_mousePositionShape.setFillColor(sf::Color::Red);
-	m_mousePositionShape.setRadius(10);
-	m_mousePositionShape.setOutlineThickness(2);
-	m_mousePositionShape.setOutlineColor(sf::Color::Green);
-	m_mousePositionShape.setOrigin(m_mousePositionShape.getGlobalBounds().width / 2, m_mousePositionShape.getGlobalBounds().height / 2);
-	m_mousePositionShape.setPosition(100, 100);*/
 }
 
 Player::~Player()
@@ -50,7 +43,6 @@ void Player::update(sf::RenderWindow& t_window, bool& t_playersTurn)
 	mousePosition = sf::Mouse::getPosition(t_window);
 	m_mouseLocation = { static_cast<float>(mousePosition.x),static_cast<float>(mousePosition.y) };
 
-	//m_mousePositionShape.setPosition(m_mouseLocation);
 	if (t_playersTurn)
 	{
 		if (m_largePiece.getGlobalBounds().contains(m_mouseLocation))
@@ -90,5 +82,4 @@ void Player::render(sf::RenderWindow& t_window)
 	t_window.draw(m_smallPiece);
 	t_window.draw(m_mediumPiece);
 	t_window.draw(m_largePiece);
-	t_window.draw(m_mousePositionShape);
 }
