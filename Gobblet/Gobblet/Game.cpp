@@ -127,6 +127,7 @@ void Game::snapBoardPieces()
 						m_player[i].m_largePiece.setPosition(m_grid.cellGrid[x][y].center.x, m_grid.cellGrid[x][y].center.y);
 						m_grid.cellGrid[x][y].IsOccupiedByPlayer = true;
 						m_isPlayersTurn = false;
+						m_player[i].m_pieceSnapped = true;
 					}
 				}
 				else if (m_grid.cellGrid[x][y].cellBody.getGlobalBounds().contains(m_player[i].m_mediumPiece.getPosition()) && !m_grid.cellGrid[x][y].IsOccupiedByNPC && !m_grid.cellGrid[x][y].IsOccupiedByPlayer)
@@ -136,6 +137,7 @@ void Game::snapBoardPieces()
 						m_player[i].m_mediumPiece.setPosition(m_grid.cellGrid[x][y].center.x, m_grid.cellGrid[x][y].center.y);
 						m_grid.cellGrid[x][y].IsOccupiedByPlayer = true;
 						m_isPlayersTurn = false;
+						m_player[i].m_pieceSnapped = true;
 					}
 				}
 				else if (m_grid.cellGrid[x][y].cellBody.getGlobalBounds().contains(m_player[i].m_smallPiece.getPosition()) && !m_grid.cellGrid[x][y].IsOccupiedByNPC && !m_grid.cellGrid[x][y].IsOccupiedByPlayer)
@@ -145,6 +147,7 @@ void Game::snapBoardPieces()
 						m_player[i].m_smallPiece.setPosition(m_grid.cellGrid[x][y].center.x, m_grid.cellGrid[x][y].center.y);
 						m_grid.cellGrid[x][y].IsOccupiedByPlayer = true;
 						m_isPlayersTurn = false;
+						m_player[i].m_pieceSnapped = true;
 					}
 				}
 				else if (m_grid.cellGrid[x][y].cellBody.getGlobalBounds().contains(m_player[i].m_tinyPiece.getPosition()) && !m_grid.cellGrid[x][y].IsOccupiedByNPC && !m_grid.cellGrid[x][y].IsOccupiedByPlayer)
@@ -154,7 +157,18 @@ void Game::snapBoardPieces()
 						m_player[i].m_tinyPiece.setPosition(m_grid.cellGrid[x][y].center.x, m_grid.cellGrid[x][y].center.y);
 						m_grid.cellGrid[x][y].IsOccupiedByPlayer = true;
 						m_isPlayersTurn = false;
+						m_player[i].m_pieceSnapped = true;
 					}
+				}
+				/// <summary>
+				///	Reset to start position is not placed on board
+				/// </summary>
+				if(sf::Mouse::isButtonPressed(sf::Mouse::Button::Left) == false && m_player[i].m_pieceSnapped == false)
+				{
+					m_player[i].m_largePiece.setPosition(m_player[i].m_startPosition);
+					m_player[i].m_mediumPiece.setPosition(m_player[i].m_startPosition);
+					m_player[i].m_smallPiece.setPosition(m_player[i].m_startPosition);
+					m_player[i].m_tinyPiece.setPosition(m_player[i].m_startPosition);
 				}
 			}
 		}
@@ -178,11 +192,15 @@ void Game::setupInitialPositions()
 	m_player[2].m_mediumPiece.setPosition(200, 900);
 	m_player[2].m_smallPiece.setPosition(200, 900);
 	m_player[2].m_tinyPiece.setPosition(200, 900);
+	for (int i = 0; i < 3; i++)
+	{
+		m_player[i].m_startPosition = m_player[i].m_largePiece.getPosition();
+	}
 
 	/// <summary>
 	/// NPC Initial Positions
 	/// </summary>
-	/// 	m_player[0].m_largePiece.setPosition(200, 300);
+	m_npc[0].m_largePiece.setPosition(1450, 300);
 	m_npc[0].m_mediumPiece.setPosition(1450, 300);
 	m_npc[0].m_smallPiece.setPosition(1450, 300);
 	m_npc[0].m_tinyPiece.setPosition(1450, 300);
