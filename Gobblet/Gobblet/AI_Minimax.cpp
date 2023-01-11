@@ -12,6 +12,11 @@ std::vector<std::pair<int, int>> AI_Minimax::get_legal_moves(Grid& t_grid)
 	{
 		for (int j = 0; j < t_grid.YAmountCells; j++)
 		{
+			if (pieceIndex < t_grid.cellGrid[i][j].pieceIndex && t_grid.cellGrid[i][j].IsOccupiedByPlayer)
+			{
+				moves.push_back(std::make_pair(i, j));
+			}
+			else
 			if (!t_grid.cellGrid[i][j].IsOccupiedByNPC && !t_grid.cellGrid[i][j].IsOccupiedByPlayer)
 			{
 				moves.push_back(std::make_pair(i, j));
@@ -126,7 +131,7 @@ bool AI_Minimax::game_is_won(std::vector<std::pair<int, int>> occupied_positions
 	return game_won;
 }
 
-std::pair<int, std::pair<int, int>> AI_Minimax::minmax(Grid t_grid, int t_depth, bool t_isPlayersTurn, int t_alpha, int t_beta, bool& myBool)
+std::pair<int, std::pair<int, int>> AI_Minimax::minmax(Grid& t_grid, int t_depth, bool t_isPlayersTurn, int t_alpha, int t_beta, bool& myBool)
 {
 	std::pair<int, int> best_move = std::make_pair(-1, -1);
 	int best_score = (t_isPlayersTurn == false) ? -1000 : 1000;
@@ -149,6 +154,7 @@ std::pair<int, std::pair<int, int>> AI_Minimax::minmax(Grid t_grid, int t_depth,
 	for (int i = 0; i < legal_moves.size(); i++)
 	{
 		std::pair<int, int> curr_move = legal_moves[i];
+
 		movePiece(sf::Vector2f(curr_move.first, curr_move.second), t_grid, t_isPlayersTurn);
 
 		if (!t_isPlayersTurn)
@@ -201,6 +207,11 @@ std::pair<int, std::pair<int, int>> AI_Minimax::minmax(Grid t_grid, int t_depth,
 
 void AI_Minimax::movePiece(sf::Vector2f t_pos, Grid& t_grid, bool isPlayer)
 {
+	if (t_grid.cellGrid[(int)t_pos.x][(int)t_pos.y].pieceIndex > pieceIndex)
+	{
+		t_grid.cellGrid[(int)t_pos.x][(int)t_pos.y].IsOccupiedByPlayer = false;
+	}
+
 	if (isPlayer) 
 	{
 		t_grid.cellGrid[(int)t_pos.x][(int)t_pos.y].IsOccupiedByPlayer = true;
@@ -244,6 +255,7 @@ sf::CircleShape& AI_Minimax::decidePieceForMoving(Grid& t_grid, NPC t_npcs[3])
 					t_circleShape = &t_npcs[i].m_largePiece;
 					t_npcs[i].largePieceInPlay = true;
 					hasMoved = true;
+					pieceIndex = 0;
 					break;
 				default:
 					break;
@@ -265,6 +277,7 @@ sf::CircleShape& AI_Minimax::decidePieceForMoving(Grid& t_grid, NPC t_npcs[3])
 					t_circleShape = &t_npcs[i].m_mediumPiece;
 					t_npcs[i].mediumPieceInPlay = true;
 					hasMoved = true;
+					pieceIndex = 1;
 					break;
 				default:
 					break;
@@ -286,6 +299,7 @@ sf::CircleShape& AI_Minimax::decidePieceForMoving(Grid& t_grid, NPC t_npcs[3])
 					t_circleShape = &t_npcs[i].m_smallPiece;
 					t_npcs[i].smallPieceInPlay = true;
 					hasMoved = true;
+					pieceIndex = 2;
 					break;
 				default:
 					break;
@@ -307,6 +321,7 @@ sf::CircleShape& AI_Minimax::decidePieceForMoving(Grid& t_grid, NPC t_npcs[3])
 					t_circleShape = &t_npcs[i].m_tinyPiece;
 					t_npcs[i].tinyPieceInPlay = true;
 					hasMoved = true;
+					pieceIndex = 3;
 					break;
 				default:
 					break;

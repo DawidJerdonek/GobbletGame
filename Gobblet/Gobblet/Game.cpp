@@ -123,17 +123,18 @@ void Game::snapBoardPieces()
 				{
 					if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Left) == false)
 					{
-						if (m_player[i].m_largePieceSnapped == false)
+						if (m_player[i].m_largePieceSnapped == false && 0 != m_grid.cellGrid[x][y].pieceIndex)
 						{
 							m_player[i].m_largePieceSnapped = true;
 							m_player[i].m_largePiece.setPosition(m_grid.cellGrid[x][y].center.x, m_grid.cellGrid[x][y].center.y);
 							m_grid.cellGrid[x][y].IsOccupiedByPlayer = true;
 							m_player[i].m_largePiecePreviousPos = sf::Vector2f( x,y );
+							m_grid.cellGrid[x][y].pieceIndex = 0;
 							m_isPlayersTurn = false;
 							moveNPC();
-
+							break;
 						}
-						else if (m_player[i].m_largePieceSnapped == true)
+						else if (m_player[i].m_largePieceSnapped == true && 0 != m_grid.cellGrid[x][y].pieceIndex)
 						{
 							m_player[i].m_largePiece.setPosition(m_grid.cellGrid[x][y].center.x, m_grid.cellGrid[x][y].center.y);
 							m_grid.cellGrid[x][y].IsOccupiedByPlayer = true;
@@ -143,9 +144,10 @@ void Game::snapBoardPieces()
 							int prevPosY = m_player[i].m_largePiecePreviousPos.y;
 							m_grid.cellGrid[prevPosX][prevPosY].IsOccupiedByPlayer = false;
 							m_player[i].m_largePiecePreviousPos = sf::Vector2f( x,y );
-
+							m_grid.cellGrid[x][y].pieceIndex = 0;
 							m_isPlayersTurn = false;
 							moveNPC();
+							break;
 						}
 					}
 				}
@@ -153,16 +155,18 @@ void Game::snapBoardPieces()
 				{
 					if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Left) == false)
 					{
-						if (m_player[i].m_mediumPieceSnapped == false)
+						if (m_player[i].m_mediumPieceSnapped == false && 1 != m_grid.cellGrid[x][y].pieceIndex)
 						{
 							m_player[i].m_mediumPieceSnapped = true;
 							m_player[i].m_mediumPiece.setPosition(m_grid.cellGrid[x][y].center.x, m_grid.cellGrid[x][y].center.y);
 							m_grid.cellGrid[x][y].IsOccupiedByPlayer = true;
 							m_player[i].m_mediumPiecePreviousPos = sf::Vector2f(x, y);
+							m_grid.cellGrid[x][y].pieceIndex = 1;
 							m_isPlayersTurn = false;
 							moveNPC();
+							break;
 						}
-						else if (m_player[i].m_mediumPieceSnapped == true)
+						else if (m_player[i].m_mediumPieceSnapped == true && 1 != m_grid.cellGrid[x][y].pieceIndex)
 						{
 							m_player[i].m_mediumPiece.setPosition(m_grid.cellGrid[x][y].center.x, m_grid.cellGrid[x][y].center.y);
 							m_grid.cellGrid[x][y].IsOccupiedByPlayer = true;
@@ -172,9 +176,10 @@ void Game::snapBoardPieces()
 							int prevPosY = m_player[i].m_mediumPiecePreviousPos.y;
 							m_grid.cellGrid[prevPosX][prevPosY].IsOccupiedByPlayer = false;
 							m_player[i].m_mediumPiecePreviousPos = sf::Vector2f(x, y);
-
+							m_grid.cellGrid[x][y].pieceIndex = 1;
 							m_isPlayersTurn = false;
 							moveNPC();
+							break;
 						}
 					}
 				}
@@ -182,16 +187,18 @@ void Game::snapBoardPieces()
 				{
 					if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Left) == false)
 					{
-						if (m_player[i].m_smallPieceSnapped == false)
+						if (m_player[i].m_smallPieceSnapped == false && 2 != m_grid.cellGrid[x][y].pieceIndex)
 						{
 							m_player[i].m_smallPieceSnapped = true;
 							m_player[i].m_smallPiece.setPosition(m_grid.cellGrid[x][y].center.x, m_grid.cellGrid[x][y].center.y);
 							m_grid.cellGrid[x][y].IsOccupiedByPlayer = true;
 							m_player[i].m_smallPiecePreviousPos = sf::Vector2f(x, y);
 							m_isPlayersTurn = false;
-							moveNPC();
+							m_grid.cellGrid[x][y].pieceIndex = 2;
+							moveNPC();							
+							break;
 						}
-						else if (m_player[i].m_smallPieceSnapped == true)
+						else if (m_player[i].m_smallPieceSnapped == true && 2 != m_grid.cellGrid[x][y].pieceIndex)
 						{
 							m_player[i].m_smallPiece.setPosition(m_grid.cellGrid[x][y].center.x, m_grid.cellGrid[x][y].center.y);
 							m_grid.cellGrid[x][y].IsOccupiedByPlayer = true;
@@ -201,9 +208,10 @@ void Game::snapBoardPieces()
 							int prevPosY = m_player[i].m_smallPiecePreviousPos.y;
 							m_grid.cellGrid[prevPosX][prevPosY].IsOccupiedByPlayer = false;
 							m_player[i].m_smallPiecePreviousPos = sf::Vector2f(x, y);
-
+							m_grid.cellGrid[x][y].pieceIndex = 2;
 							m_isPlayersTurn = false;
 							moveNPC();
+							break;
 						}
 					}
 				}
@@ -211,16 +219,18 @@ void Game::snapBoardPieces()
 				{
 					if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Left) == false)
 					{
-						if (m_player[i].m_tinyPieceSnapped == false)
+						if (m_player[i].m_tinyPieceSnapped == false && 3 != m_grid.cellGrid[x][y].pieceIndex)
 						{
 							m_player[i].m_tinyPieceSnapped = true;
 							m_player[i].m_tinyPiece.setPosition(m_grid.cellGrid[x][y].center.x, m_grid.cellGrid[x][y].center.y);
 							m_grid.cellGrid[x][y].IsOccupiedByPlayer = true;
 							m_player[i].m_tinyPiecePreviousPos = sf::Vector2f(x, y);
 							m_isPlayersTurn = false;
+							m_grid.cellGrid[x][y].pieceIndex = 3;
 							moveNPC();
+							break;
 						}
-						else if (m_player[i].m_tinyPieceSnapped == true)
+						else if (m_player[i].m_tinyPieceSnapped == true && 3 != m_grid.cellGrid[x][y].pieceIndex)
 						{
 							m_player[i].m_tinyPiece.setPosition(m_grid.cellGrid[x][y].center.x, m_grid.cellGrid[x][y].center.y);
 							m_grid.cellGrid[x][y].IsOccupiedByPlayer = true;
@@ -230,9 +240,10 @@ void Game::snapBoardPieces()
 							int prevPosY = m_player[i].m_tinyPiecePreviousPos.y;
 							m_grid.cellGrid[prevPosX][prevPosY].IsOccupiedByPlayer = false;
 							m_player[i].m_tinyPiecePreviousPos = sf::Vector2f(x, y);
-
+							m_grid.cellGrid[x][y].pieceIndex = 3;
 							m_isPlayersTurn = false;
 							moveNPC();
+							break;
 						}
 					}
 				}
@@ -324,17 +335,26 @@ void Game::render()
 
 void Game::moveNPC()
 {
-	bool myBool = false;
+	if (!m_isPlayersTurn)
+	{
+		bool myBool = false;
+		AI.pieceIndex = -1;
 
-	std::pair<int, std::pair<int, int>> move = AI.minmax(m_grid, 0 , false, -1000, 1000, myBool);
+		AI.finalPiece = &AI.decidePieceForMoving(m_grid, m_npc);
 
-	AI.finalPiece = &AI.decidePieceForMoving(m_grid, m_npc);
+		std::pair<int, std::pair<int, int>> move = AI.minmax(m_grid, 0, false, -1000, 1000, myBool);
 
-	Cell& cell = m_grid.cellGrid[move.second.first][move.second.second];
+		Cell& cell = m_grid.cellGrid[move.second.first][move.second.second];
 
-	AI.finalPiece->setPosition(cell.center);
+		AI.finalPiece->setPosition(cell.center);
 
-	cell.IsOccupiedByNPC = true;
-	AI.hasMoved = false;
-	m_isPlayersTurn = true;
+		if (cell.IsOccupiedByPlayer)
+		{
+			cell.IsOccupiedByPlayer = false;
+		}
+
+		cell.IsOccupiedByNPC = true;
+		AI.hasMoved = false;
+		m_isPlayersTurn = true;
+	}
 }

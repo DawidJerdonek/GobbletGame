@@ -23,4 +23,8 @@ public:
 	int m_parentCellId;
 
 	int getID() const;
+	
+	int pieceIndex = -1;
+
+	std::vector<std::pair<int, int>> piecesOrder;
 };
