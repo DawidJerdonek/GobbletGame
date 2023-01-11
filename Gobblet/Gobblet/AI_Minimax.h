@@ -17,13 +17,13 @@ public:
 	bool hasMoved = false;
 	int pieceIndex = -1;
 	int npcIndex = -1;
+	int get_board_state(Grid& t_grid);
 
 private:
 	sf::Vector2f oldPos{ -1,-1 };
 
 	std::vector<std::pair<int, int>> get_legal_moves(Grid& t_grid);
 	bool board_is_full(Grid& t_grid);
-	int get_board_state(Grid& t_grid);
 	std::vector<std::pair<int, int>> get_occupied_positions_NPC(Grid& t_grid);
 	std::vector<std::pair<int, int>> get_occupied_positions_Player(Grid& t_grid);
 	bool game_is_won(std::vector<std::pair<int, int>> occupied_positions);

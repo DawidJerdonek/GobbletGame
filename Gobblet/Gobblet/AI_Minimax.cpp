@@ -49,9 +49,12 @@ std::vector<std::pair<int, int>> AI_Minimax::get_occupied_positions_NPC(Grid& t_
 	{
 		for (int j = 0; j < t_grid.YAmountCells; j++)
 		{
-			if (t_grid.cellGrid[i][j].IsOccupiedByNPC)
+			if (t_grid.cellGrid[i][j].piecesOrder.size() > 0) 
 			{
-				occupied_positions.push_back(std::make_pair(i, j));
+				if (t_grid.cellGrid[i][j].IsOccupiedByNPC && t_grid.cellGrid[i][j].piecesOrder.at(t_grid.cellGrid[i][j].piecesOrder.size() - 1).first == 1)
+				{
+					occupied_positions.push_back(std::make_pair(i, j));
+				}
 			}
 		}
 	}
@@ -67,9 +70,13 @@ std::vector<std::pair<int, int>> AI_Minimax::get_occupied_positions_Player(Grid&
 	{
 		for (int j = 0; j < t_grid.YAmountCells; j++)
 		{
-			if (t_grid.cellGrid[i][j].IsOccupiedByPlayer)
+
+			if (t_grid.cellGrid[i][j].piecesOrder.size() > 0)
 			{
-				occupied_positions.push_back(std::make_pair(i, j));
+				if (t_grid.cellGrid[i][j].IsOccupiedByPlayer && t_grid.cellGrid[i][j].piecesOrder.at(t_grid.cellGrid[i][j].piecesOrder.size() - 1).first == 0)
+				{
+					occupied_positions.push_back(std::make_pair(i, j));
+				}
 			}
 		}
 	}
@@ -114,6 +121,7 @@ bool AI_Minimax::game_is_won(std::vector<std::pair<int, int>> occupied_positions
 	{
 		game_won = true;
 		std::vector<std::pair<int, int>> curr_win_state = winning_states[i];
+		
 		for (int j = 0; j < 4; j++)
 		{
 			if (!(std::find(std::begin(occupied_positions), std::end(occupied_positions), curr_win_state[j]) != std::end(occupied_positions)))

@@ -145,8 +145,16 @@ void Game::update(sf::Time t_deltaTime)
 				m_player[i].update(m_window, m_isPlayersTurn);
 			}
 
+			if (AI.get_board_state(m_grid) == -1000) {
+				m_gameWon = true;
+			}
+			else if(AI.get_board_state(m_grid) == 1000) {
+				m_gameLost = true;
+			}
+
 			snapBoardPieces();
 		}
+
 		if (m_gameWon)
 		{
 			m_loseWinText.setFillColor(sf::Color::Green);
@@ -172,19 +180,8 @@ void Game::snapBoardPieces()
 		{
 			for (int i = 0; i < 3; i++)
 			{
-				if (m_grid.cellGrid[x][y].cellBody.getGlobalBounds().contains(m_player[i].m_largePiece.getPosition()) && !m_grid.cellGrid[x][y].IsOccupiedByPlayer)
+				if (m_grid.cellGrid[x][y].cellBody.getGlobalBounds().contains(m_player[i].m_largePiece.getPosition()))
 				{
-					if (m_grid.cellGrid[x][y].piecesOrder.size() > 0)
-					{
-						for (int i = 0; i < m_grid.cellGrid[x][y].piecesOrder.size(); i++)
-						{
-							if (m_grid.cellGrid[x][y].piecesOrder.at(i).first == 0 || m_grid.cellGrid[x][y].piecesOrder.at(m_grid.cellGrid[x][y].piecesOrder.size() - 1).second.second > 0)
-							{
-								break;
-							}
-						}
-					}
-
 					if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Left) == false)
 					{
 						if (m_player[i].m_largePieceSnapped == false && 0 != m_grid.cellGrid[x][y].pieceIndex)
@@ -216,26 +213,26 @@ void Game::snapBoardPieces()
 							m_grid.cellGrid[x][y].pieceIndex = 0;
 							m_grid.cellGrid[x][y].piecesOrder.push_back(std::make_pair(0, std::make_pair(i, 0)));
 							m_isPlayersTurn = false;
+							m_grid.cellGrid[prevPosX][prevPosY].piecesOrder.erase(std::remove(m_grid.cellGrid[prevPosX][prevPosY].piecesOrder.begin(), m_grid.cellGrid[prevPosX][prevPosY].piecesOrder.end(), std::make_pair(0, std::make_pair(i, 0))));
+							
+							if (m_grid.cellGrid[prevPosX][prevPosY].piecesOrder.size() > 0) 
+							{
+								m_grid.cellGrid[prevPosX][prevPosY].pieceIndex = m_grid.cellGrid[prevPosX][prevPosY].piecesOrder.at(m_grid.cellGrid[prevPosX][prevPosY].piecesOrder.size() - 1).second.second;
+							}
+							else {
+								m_grid.cellGrid[prevPosX][prevPosY].pieceIndex = -1;
+							}
+							
 							moveNPC();
 							break;
 						}
 					}
 				}
-				else if (m_grid.cellGrid[x][y].cellBody.getGlobalBounds().contains(m_player[i].m_mediumPiece.getPosition()) && !m_grid.cellGrid[x][y].IsOccupiedByPlayer)
+				else if (m_grid.cellGrid[x][y].cellBody.getGlobalBounds().contains(m_player[i].m_mediumPiece.getPosition()))
 				{
-					if (m_grid.cellGrid[x][y].piecesOrder.size() > 0)
-					{
-						for (int i = 0; i < m_grid.cellGrid[x][y].piecesOrder.size(); i++)
-						{
-							if (m_grid.cellGrid[x][y].piecesOrder.at(i).first == 0 || m_grid.cellGrid[x][y].piecesOrder.at(m_grid.cellGrid[x][y].piecesOrder.size() - 1).second.second > 1)
-							{
-								break;
-							}
-						}
-					}
-
 					if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Left) == false)
-					{							checkForNPCUnderCell(x, y);
+					{	
+						checkForNPCUnderCell(x, y);
 
 						if (m_player[i].m_mediumPieceSnapped == false && 1 != m_grid.cellGrid[x][y].pieceIndex)
 						{
@@ -266,18 +263,28 @@ void Game::snapBoardPieces()
 							m_grid.cellGrid[x][y].pieceIndex = 1;
 							m_grid.cellGrid[x][y].piecesOrder.push_back(std::make_pair(0 ,std::make_pair(i, 1)));
 							m_isPlayersTurn = false;
+							m_grid.cellGrid[prevPosX][prevPosY].piecesOrder.erase(std::remove(m_grid.cellGrid[prevPosX][prevPosY].piecesOrder.begin(), m_grid.cellGrid[prevPosX][prevPosY].piecesOrder.end(), std::make_pair(0, std::make_pair(i, 1))));
+							
+							if (m_grid.cellGrid[prevPosX][prevPosY].piecesOrder.size() > 0)
+							{
+								m_grid.cellGrid[prevPosX][prevPosY].pieceIndex = m_grid.cellGrid[prevPosX][prevPosY].piecesOrder.at(m_grid.cellGrid[prevPosX][prevPosY].piecesOrder.size() - 1).second.second;
+							}
+							else {
+								m_grid.cellGrid[prevPosX][prevPosY].pieceIndex = -1;
+							}
+
 							moveNPC();
 							break;
 						}
 					}
 				}
-				else if (m_grid.cellGrid[x][y].cellBody.getGlobalBounds().contains(m_player[i].m_smallPiece.getPosition()) && !m_grid.cellGrid[x][y].IsOccupiedByPlayer)
+				else if (m_grid.cellGrid[x][y].cellBody.getGlobalBounds().contains(m_player[i].m_smallPiece.getPosition()))
 				{
 					if (m_grid.cellGrid[x][y].piecesOrder.size() > 0)
 					{
 						for (int i = 0; i < m_grid.cellGrid[x][y].piecesOrder.size(); i++)
 						{
-							if (m_grid.cellGrid[x][y].piecesOrder.at(i).first == 0 || m_grid.cellGrid[x][y].piecesOrder.at(m_grid.cellGrid[x][y].piecesOrder.size() - 1).second.second > 2)
+							if (m_grid.cellGrid[x][y].piecesOrder.at(m_grid.cellGrid[x][y].piecesOrder.size() - 1).second.second > 2)
 							{
 								break;
 							}
@@ -315,24 +322,23 @@ void Game::snapBoardPieces()
 							m_grid.cellGrid[x][y].pieceIndex = 2;
 							m_grid.cellGrid[x][y].piecesOrder.push_back(std::make_pair(0, std::make_pair(i, 2)));
 							m_isPlayersTurn = false;
+							m_grid.cellGrid[prevPosX][prevPosY].piecesOrder.erase(std::remove(m_grid.cellGrid[prevPosX][prevPosY].piecesOrder.begin(), m_grid.cellGrid[prevPosX][prevPosY].piecesOrder.end(), std::make_pair(0, std::make_pair(i, 2))));
+							
+							if (m_grid.cellGrid[prevPosX][prevPosY].piecesOrder.size() > 0)
+							{
+								m_grid.cellGrid[prevPosX][prevPosY].pieceIndex = m_grid.cellGrid[prevPosX][prevPosY].piecesOrder.at(m_grid.cellGrid[prevPosX][prevPosY].piecesOrder.size() - 1).second.second;
+							}
+							else {
+								m_grid.cellGrid[prevPosX][prevPosY].pieceIndex = -1;
+							}
+
 							moveNPC();
 							break;
 						}
 					}
 				}
-				else if (m_grid.cellGrid[x][y].cellBody.getGlobalBounds().contains(m_player[i].m_tinyPiece.getPosition()) && !m_grid.cellGrid[x][y].IsOccupiedByPlayer)
+				else if (m_grid.cellGrid[x][y].cellBody.getGlobalBounds().contains(m_player[i].m_tinyPiece.getPosition()))
 				{
-					if (m_grid.cellGrid[x][y].piecesOrder.size() > 0)
-					{
-						for (int i = 0; i < m_grid.cellGrid[x][y].piecesOrder.size(); i++)
-						{
-							if (m_grid.cellGrid[x][y].piecesOrder.at(i).first == 0 || m_grid.cellGrid[x][y].piecesOrder.at(m_grid.cellGrid[x][y].piecesOrder.size() - 1).second.second > 3)
-							{
-								break;
-							}
-						}
-					}
-
 					if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Left) == false)
 					{
 						if (m_player[i].m_tinyPieceSnapped == false && 3 != m_grid.cellGrid[x][y].pieceIndex)
@@ -363,7 +369,17 @@ void Game::snapBoardPieces()
 							m_player[i].m_tinyPiecePreviousPos = sf::Vector2f(x, y);
 							m_grid.cellGrid[x][y].pieceIndex = 3;
 							m_grid.cellGrid[x][y].piecesOrder.push_back(std::make_pair(0, std::make_pair(i, 3)));
+							m_grid.cellGrid[prevPosX][prevPosY].piecesOrder.erase(std::remove(m_grid.cellGrid[prevPosX][prevPosY].piecesOrder.begin(), m_grid.cellGrid[prevPosX][prevPosY].piecesOrder.end(), std::make_pair(0, std::make_pair(i, 3))));
 							m_isPlayersTurn = false;
+							
+							if (m_grid.cellGrid[prevPosX][prevPosY].piecesOrder.size() > 0)
+							{
+								m_grid.cellGrid[prevPosX][prevPosY].pieceIndex = m_grid.cellGrid[prevPosX][prevPosY].piecesOrder.at(m_grid.cellGrid[prevPosX][prevPosY].piecesOrder.size() - 1).second.second;
+							}
+							else {
+								m_grid.cellGrid[prevPosX][prevPosY].pieceIndex = -1;
+							}
+
 							moveNPC();
 							break;
 						}
@@ -382,14 +398,17 @@ void Game::snapBoardPieces()
 		{
 			m_player[i].m_largePiece.setPosition(m_player[i].m_startPosition);
 		}
+		else
 		if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Left) == false && m_player[i].m_mediumPieceSnapped == false)
 		{
 			m_player[i].m_mediumPiece.setPosition(m_player[i].m_startPosition);
 		}
+		else
 		if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Left) == false && m_player[i].m_smallPieceSnapped == false)
 		{
 			m_player[i].m_smallPiece.setPosition(m_player[i].m_startPosition);
 		}
+		else
 		if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Left) == false && m_player[i].m_tinyPieceSnapped == false)
 		{
 			m_player[i].m_tinyPiece.setPosition(m_player[i].m_startPosition);
@@ -492,7 +511,7 @@ void Game::render()
 
 void Game::moveNPC()
 {
-	if (!m_isPlayersTurn)
+	if (!m_isPlayersTurn && !m_gameWon && !m_gameLost)
 	{
 		bool myBool = false;
 
