@@ -45,32 +45,44 @@ void Player::update(sf::RenderWindow& t_window, bool& t_playersTurn)
 
 	if (t_playersTurn)
 	{
-		if (m_largePiece.getGlobalBounds().contains(m_mouseLocation))
+		if (m_largePieceSnapped == false)
 		{
-			if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Left))
+			if (m_largePiece.getGlobalBounds().contains(m_mouseLocation))
 			{
-				m_largePiece.setPosition(m_mouseLocation);
+				if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Left))
+				{
+					m_largePiece.setPosition(m_mouseLocation);
+				}
 			}
 		}
-		else if (m_mediumPiece.getGlobalBounds().contains(m_mouseLocation))
+		else if (m_mediumPieceSnapped == false)
 		{
-			if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Left))
+			if (m_mediumPiece.getGlobalBounds().contains(m_mouseLocation))
 			{
-				m_mediumPiece.setPosition(m_mouseLocation);
+				if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Left))
+				{
+					m_mediumPiece.setPosition(m_mouseLocation);
+				}
 			}
 		}
-		else if (m_smallPiece.getGlobalBounds().contains(m_mouseLocation))
+		else if(m_smallPieceSnapped == false)
 		{
-			if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Left))
+			if (m_smallPiece.getGlobalBounds().contains(m_mouseLocation))
 			{
-				m_smallPiece.setPosition(m_mouseLocation);
+				if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Left))
+				{
+					m_smallPiece.setPosition(m_mouseLocation);
+				}
 			}
 		}
-		else if (m_tinyPiece.getGlobalBounds().contains(m_mouseLocation))
+		else if(m_tinyPieceSnapped == false)
 		{
-			if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Left))
+			if (m_tinyPiece.getGlobalBounds().contains(m_mouseLocation))
 			{
-				m_tinyPiece.setPosition(m_mouseLocation);
+				if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Left))
+				{
+					m_tinyPiece.setPosition(m_mouseLocation);
+				}
 			}
 		}
 	}

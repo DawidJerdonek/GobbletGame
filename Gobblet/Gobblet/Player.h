@@ -20,6 +20,10 @@ public:
 	sf::Vector2f m_mouseLocation;
 
 	sf::Vector2f m_startPosition;
-	bool m_pieceSnapped = false;
-};
+	bool m_tinyPieceSnapped = false;
+	bool m_smallPieceSnapped = false;
+	bool m_mediumPieceSnapped = false;
+	bool m_largePieceSnapped = false;
 
+
+};

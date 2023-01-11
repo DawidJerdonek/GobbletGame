@@ -123,7 +123,7 @@ void Game::snapBoardPieces()
 				{
 					if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Left) == false)
 					{
-						m_player[i].m_pieceSnapped = true;
+						m_player[i].m_largePieceSnapped = true;
 						m_player[i].m_largePiece.setPosition(m_grid.cellGrid[x][y].center.x, m_grid.cellGrid[x][y].center.y);
 						m_grid.cellGrid[x][y].IsOccupiedByPlayer = true;
 						m_isPlayersTurn = false;
@@ -134,7 +134,7 @@ void Game::snapBoardPieces()
 				{
 					if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Left) == false)
 					{
-						m_player[i].m_pieceSnapped = true;
+						m_player[i].m_mediumPieceSnapped = true;
 						m_player[i].m_mediumPiece.setPosition(m_grid.cellGrid[x][y].center.x, m_grid.cellGrid[x][y].center.y);
 						m_grid.cellGrid[x][y].IsOccupiedByPlayer = true;
 						m_isPlayersTurn = false;
@@ -145,7 +145,7 @@ void Game::snapBoardPieces()
 				{
 					if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Left) == false)
 					{
-						m_player[i].m_pieceSnapped = true;
+						m_player[i].m_smallPieceSnapped = true;
 						m_player[i].m_smallPiece.setPosition(m_grid.cellGrid[x][y].center.x, m_grid.cellGrid[x][y].center.y);
 						m_grid.cellGrid[x][y].IsOccupiedByPlayer = true;
 						m_isPlayersTurn = false;
@@ -156,7 +156,7 @@ void Game::snapBoardPieces()
 				{
 					if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Left) == false)
 					{
-						m_player[i].m_pieceSnapped = true;
+						m_player[i].m_tinyPieceSnapped = true;
 						m_player[i].m_tinyPiece.setPosition(m_grid.cellGrid[x][y].center.x, m_grid.cellGrid[x][y].center.y);
 						m_grid.cellGrid[x][y].IsOccupiedByPlayer = true;
 						m_isPlayersTurn = false;
@@ -172,13 +172,23 @@ void Game::snapBoardPieces()
 	/// </summary>
 	for (int i = 0; i < 3; i++)
 	{
-		if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Left) == false && m_player[i].m_pieceSnapped == false)
+		if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Left) == false && m_player[i].m_largePieceSnapped == false)
 		{
 			m_player[i].m_largePiece.setPosition(m_player[i].m_startPosition);
+		}
+		if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Left) == false && m_player[i].m_mediumPieceSnapped == false)
+		{
 			m_player[i].m_mediumPiece.setPosition(m_player[i].m_startPosition);
+		}
+		if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Left) == false && m_player[i].m_smallPieceSnapped == false)
+		{
 			m_player[i].m_smallPiece.setPosition(m_player[i].m_startPosition);
+		}
+		if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Left) == false && m_player[i].m_tinyPieceSnapped == false)
+		{
 			m_player[i].m_tinyPiece.setPosition(m_player[i].m_startPosition);
 		}
+		
 	}
 }
 
