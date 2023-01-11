@@ -30,7 +30,6 @@ Player::Player()
 	m_tinyPiece.setOutlineColor(sf::Color::Black);
 	m_tinyPiece.setOrigin(m_tinyPiece.getGlobalBounds().width / 2, m_tinyPiece.getGlobalBounds().height / 2);
 	m_tinyPiece.setPosition(200, 800);
-
 }
 
 Player::~Player()
@@ -86,18 +85,6 @@ void Player::update(sf::RenderWindow& t_window, bool& t_playersTurn)
 				}
 			}
 		}
-
-		if (m_largePieceSnapped == true)
-		{
-			if (m_largePiece.getGlobalBounds().contains(m_mouseLocation))
-			{
-				if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Left))
-				{
-					m_largePiece.setPosition(m_mouseLocation);
-				}
-			}
-		}
-
 	}
 }
 
