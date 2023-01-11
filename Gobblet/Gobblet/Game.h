@@ -40,6 +40,12 @@ private:
 	bool m_exitGame; // control exiting game
 	bool m_isPlayersTurn = true;
 
+	bool m_gameWon = false;
+	bool m_gameLost = false;
+
+	sf::Font m_font;
+	sf::Text m_loseWinText;
+
 	Grid m_grid;
 
 	Player m_player[3]; //3 sets of sized pieces

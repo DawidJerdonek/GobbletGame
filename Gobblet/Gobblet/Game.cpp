@@ -15,9 +15,18 @@
 /// load and setup thne image
 /// </summary>
 Game::Game() :
-	m_window{ sf::VideoMode{ xRes, yRes, 32U }, "SFML Game" },
+	m_window{ sf::VideoMode{ xRes, yRes, 32U }, "Gobblet Game" },
 	m_exitGame{false} //when true game will exit
 {
+	if (!m_font.loadFromFile("Assets/Fonts/ariblk.ttf"))
+	{
+		std::cout << "error with font file file";
+	}
+	m_loseWinText.setFont(m_font);
+	m_loseWinText.setCharacterSize(50);
+	m_loseWinText.setPosition(10,20);
+
+
 	m_grid.setupGrid();
 	setupInitialPositions();
 }
@@ -97,13 +106,26 @@ void Game::processKeys(sf::Event t_event)
 /// <param name="t_deltaTime">time interval per frame</param>
 void Game::update(sf::Time t_deltaTime)
 {
-	m_grid.update(m_window);
-	for (int i = 0; i < 3; i++)
+	if (m_gameWon == false && m_gameLost == false)
 	{
-		m_player[i].update(m_window, m_isPlayersTurn);
-	}
+		m_grid.update(m_window);
+		for (int i = 0; i < 3; i++)
+		{
+			m_player[i].update(m_window, m_isPlayersTurn);
+		}
 
-	snapBoardPieces();
+		snapBoardPieces();
+	}
+	if (m_gameWon)
+	{
+		m_loseWinText.setFillColor(sf::Color::Green);
+		m_loseWinText.setString("You have WON! \n Press 'ESCAPE' to quit game");
+	}
+	else if (m_gameLost)
+	{
+		m_loseWinText.setFillColor(sf::Color::Red);
+		m_loseWinText.setString("You have been defeated! \n Press 'ESCAPE' to quit game");
+	}
 
 	if (m_exitGame)
 	{
@@ -330,6 +352,7 @@ void Game::render()
 	{
 		m_npc[i].render(m_window);
 	}
+	m_window.draw(m_loseWinText);
 	m_window.display();
 }
 
