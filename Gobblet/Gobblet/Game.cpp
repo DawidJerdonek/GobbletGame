@@ -282,16 +282,6 @@ void Game::snapBoardPieces()
 				}
 				else if (m_grid.cellGrid[x][y].cellBody.getGlobalBounds().contains(m_player[i].m_smallPiece.getPosition()))
 				{
-					if (m_grid.cellGrid[x][y].piecesOrder.size() > 0)
-					{
-						for (int i = 0; i < m_grid.cellGrid[x][y].piecesOrder.size(); i++)
-						{
-							if (m_grid.cellGrid[x][y].piecesOrder.at(m_grid.cellGrid[x][y].piecesOrder.size() - 1).second.second > 2)
-							{
-								break;
-							}
-						}
-					}
 
 					if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Left) == false)
 					{

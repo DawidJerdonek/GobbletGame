@@ -1,0 +1,42 @@
+\hypertarget{_player_8h_source}{}\doxysection{Player.\+h}
+\label{_player_8h_source}\index{C:/Users/andre/Documents/GitHub/GobbletGame/Gobblet/Gobblet/Player.h@{C:/Users/andre/Documents/GitHub/GobbletGame/Gobblet/Gobblet/Player.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#include\ <SFML/Graphics.hpp>}}
+\DoxyCodeLine{00006\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_player}{Player}}}
+\DoxyCodeLine{00007\ \{}
+\DoxyCodeLine{00008\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ \ \ \ \ \mbox{\hyperlink{class_player}{Player}}();}
+\DoxyCodeLine{00011\ \ \ \ \ \mbox{\hyperlink{class_player}{\string~Player}}();}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \ \ \ \ \textcolor{keywordtype}{void}\ update(sf::RenderWindow\&\ t\_window,\ \textcolor{keywordtype}{bool}\&\ t\_playersTurn);}
+\DoxyCodeLine{00014\ \ \ \ \ \textcolor{keywordtype}{void}\ render(sf::RenderWindow\&\ t\_window);}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \ \ \ \ \textcolor{comment}{//\ Get\ position\ of\ mouse\ on\ screen}}
+\DoxyCodeLine{00017\ \ \ \ \ sf::Vector2f\ m\_mouseLocation;}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \ \ \ \ \textcolor{comment}{//Start\ position\ stored\ to\ reset\ pieces\ into\ position\ beside\ board}}
+\DoxyCodeLine{00020\ \ \ \ \ sf::Vector2f\ m\_startPosition;}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{comment}{//\ Create\ one\ set\ of\ pieces}}
+\DoxyCodeLine{00023\ \ \ \ \ sf::CircleShape\ m\_largePiece;}
+\DoxyCodeLine{00024\ \ \ \ \ sf::CircleShape\ m\_mediumPiece;}
+\DoxyCodeLine{00025\ \ \ \ \ sf::CircleShape\ m\_smallPiece;}
+\DoxyCodeLine{00026\ \ \ \ \ sf::CircleShape\ m\_tinyPiece;}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{comment}{//Check\ is\ a\ piece\ is\ snapped\ onto\ the\ board}}
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{keywordtype}{bool}\ m\_tinyPieceSnapped\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{keywordtype}{bool}\ m\_smallPieceSnapped\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keywordtype}{bool}\ m\_mediumPieceSnapped\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keywordtype}{bool}\ m\_largePieceSnapped\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{comment}{//\ Store\ previous\ positions\ of\ pieces}}
+\DoxyCodeLine{00035\ \ \ \ \ sf::Vector2f\ m\_tinyPiecePreviousPos;}
+\DoxyCodeLine{00036\ \ \ \ \ sf::Vector2f\ m\_smallPiecePreviousPos;}
+\DoxyCodeLine{00037\ \ \ \ \ sf::Vector2f\ m\_mediumPiecePreviousPos;}
+\DoxyCodeLine{00038\ \ \ \ \ sf::Vector2f\ m\_largePiecePreviousPos;}
+\DoxyCodeLine{00039\ \};}
+
+\end{DoxyCode}

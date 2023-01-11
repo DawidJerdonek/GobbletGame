@@ -4,6 +4,9 @@ AI_Minimax::AI_Minimax()
 {
 }
 
+/// <summary>
+/// gets all possible moves on board
+/// </summary>
 std::vector<std::pair<int, int>> AI_Minimax::get_legal_moves(Grid& t_grid)
 {
 	std::vector<std::pair<int, int>> moves;
@@ -27,6 +30,9 @@ std::vector<std::pair<int, int>> AI_Minimax::get_legal_moves(Grid& t_grid)
 	return moves;
 }
 
+/// <summary>
+/// Checks if board is full
+/// </summary>
 bool AI_Minimax::board_is_full(Grid& t_grid)
 {
 	std::vector<std::pair<int, int>> legal_moves = get_legal_moves(t_grid);
@@ -41,6 +47,11 @@ bool AI_Minimax::board_is_full(Grid& t_grid)
 	}
 }
 
+/// <summary>
+/// Gets all NPC's occupied spaces
+/// </summary>
+/// <param name="t_grid"></param>
+/// <returns></returns>
 std::vector<std::pair<int, int>> AI_Minimax::get_occupied_positions_NPC(Grid& t_grid)
 {
 	std::vector<std::pair<int, int>> occupied_positions;
@@ -62,6 +73,11 @@ std::vector<std::pair<int, int>> AI_Minimax::get_occupied_positions_NPC(Grid& t_
 	return occupied_positions;
 }
 
+/// <summary>
+/// Gets all player occupied spaces
+/// </summary>
+/// <param name="t_grid"></param>
+/// <returns></returns>
 std::vector<std::pair<int, int>> AI_Minimax::get_occupied_positions_Player(Grid& t_grid)
 {
 	std::vector<std::pair<int, int>> occupied_positions;
@@ -111,7 +127,11 @@ int AI_Minimax::get_board_state(Grid& t_grid)
 
 	return 0;
 }
-
+/// <summary>
+/// Checks if game has been won
+/// </summary>
+/// <param name="occupied_positions"></param>
+/// <returns></returns>
 bool AI_Minimax::game_is_won(std::vector<std::pair<int, int>> occupied_positions)
 {
 	bool game_won;
@@ -138,6 +158,16 @@ bool AI_Minimax::game_is_won(std::vector<std::pair<int, int>> occupied_positions
 	return game_won;
 }
 
+/// <summary>
+/// an alg of minimax for generating what tile the AI should move to
+/// </summary>
+/// <param name="t_grid"></param>
+/// <param name="t_depth"></param>
+/// <param name="t_isPlayersTurn"></param>
+/// <param name="t_alpha"></param>
+/// <param name="t_beta"></param>
+/// <param name="myBool"></param>
+/// <returns></returns>
 std::pair<int, std::pair<int, int>> AI_Minimax::minmax(Grid& t_grid, int t_depth, bool t_isPlayersTurn, int t_alpha, int t_beta, bool& myBool)
 {
 	std::pair<int, int> best_move = std::make_pair(-1, -1);
@@ -170,7 +200,7 @@ std::pair<int, std::pair<int, int>> AI_Minimax::minmax(Grid& t_grid, int t_depth
 
 			if (best_score < score)
 			{
-				best_score = score - t_depth * 3;
+				best_score = score - t_depth * 10;
 				best_move = curr_move;
 
 				t_alpha = std::max(t_alpha, best_score);
@@ -188,7 +218,7 @@ std::pair<int, std::pair<int, int>> AI_Minimax::minmax(Grid& t_grid, int t_depth
 
 			if (best_score > score)
 			{
-				best_score = score + t_depth * 3;
+				best_score = score + t_depth * 10;
 				best_move = curr_move;
 
 				t_beta = std::min(t_beta, best_score);
@@ -207,6 +237,12 @@ std::pair<int, std::pair<int, int>> AI_Minimax::minmax(Grid& t_grid, int t_depth
 	return std::make_pair(best_score, best_move);
 }
 
+/// <summary>
+/// moves pieces for alg minimax
+/// </summary>
+/// <param name="t_pos"></param>
+/// <param name="t_grid"></param>
+/// <param name="isPlayer"></param>
 void AI_Minimax::movePiece(sf::Vector2f t_pos, Grid& t_grid, bool isPlayer)
 {
 	if (t_grid.cellGrid[(int)t_pos.x][(int)t_pos.y].pieceIndex > pieceIndex)
@@ -223,12 +259,23 @@ void AI_Minimax::movePiece(sf::Vector2f t_pos, Grid& t_grid, bool isPlayer)
 	}
 }
 
+/// <summary>
+/// unmoves pieces for alg minimax
+/// </summary>
+/// <param name="t_pos"></param>
+/// <param name="t_grid"></param>
 void AI_Minimax::unMovePiece(sf::Vector2f t_pos, Grid& t_grid)
 {
 	t_grid.cellGrid[(int)t_pos.x][(int)t_pos.y].IsOccupiedByPlayer = false;
 	t_grid.cellGrid[(int)t_pos.x][(int)t_pos.y].IsOccupiedByNPC = false;
 }
 
+/// <summary>
+/// Decides what piece to play in game and alg minimax
+/// </summary>
+/// <param name="t_grid"></param>
+/// <param name="t_npcs"></param>
+/// <returns></returns>
 sf::CircleShape& AI_Minimax::decidePieceForMoving(Grid& t_grid, NPC t_npcs[3])
 {
 	sf::CircleShape* t_circleShape = nullptr;

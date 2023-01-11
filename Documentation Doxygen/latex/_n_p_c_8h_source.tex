@@ -1,0 +1,42 @@
+\hypertarget{_n_p_c_8h_source}{}\doxysection{NPC.\+h}
+\label{_n_p_c_8h_source}\index{C:/Users/andre/Documents/GitHub/GobbletGame/Gobblet/Gobblet/NPC.h@{C:/Users/andre/Documents/GitHub/GobbletGame/Gobblet/Gobblet/NPC.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#include\ <SFML/Graphics.hpp>}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00007\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_n_p_c}{NPC}}}
+\DoxyCodeLine{00008\ \{}
+\DoxyCodeLine{00009\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \ \ \ \ \mbox{\hyperlink{class_n_p_c}{NPC}}();}
+\DoxyCodeLine{00012\ \ \ \ \ \mbox{\hyperlink{class_n_p_c}{\string~NPC}}();}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ \ \ \ \ \textcolor{keywordtype}{void}\ update();}
+\DoxyCodeLine{00015\ \ \ \ \ \textcolor{keywordtype}{void}\ render(sf::RenderWindow\&\ t\_window);}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \ \ \ \ \textcolor{comment}{//\ Create\ one\ set\ of\ pieces}}
+\DoxyCodeLine{00018\ \ \ \ \ sf::CircleShape\ m\_largePiece;}
+\DoxyCodeLine{00019\ \ \ \ \ sf::CircleShape\ m\_mediumPiece;}
+\DoxyCodeLine{00020\ \ \ \ \ sf::CircleShape\ m\_smallPiece;}
+\DoxyCodeLine{00021\ \ \ \ \ sf::CircleShape\ m\_tinyPiece;}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{comment}{//Check\ if\ each\ piece\ is\ currently\ in\ play}}
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keywordtype}{bool}\ largePieceInPlay\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00025\ \ \ \ \ \textcolor{keywordtype}{bool}\ mediumPieceInPlay\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keywordtype}{bool}\ smallPieceInPlay\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{keywordtype}{bool}\ tinyPieceInPlay\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{comment}{//Set\ initial\ position\ of\ pieces}}
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{keywordtype}{int}\ largePieceYCoords\ =\ 200;}
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keywordtype}{int}\ mediumPieceYCoords\ =\ 400;}
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keywordtype}{int}\ smallPieceYCoords\ =\ 600;}
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{keywordtype}{int}\ tinyPieceYCoords\ =\ 800;}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00035\ \ \ \ \ sf::Vector2f\ largePieceBoardCoords\{\ -\/1,-\/1\ \};}
+\DoxyCodeLine{00036\ \ \ \ \ sf::Vector2f\ mediumPieceBoardCoords\{\ -\/1,-\/1\ \};}
+\DoxyCodeLine{00037\ \ \ \ \ sf::Vector2f\ smallPieceBoardCoords\{\ -\/1,-\/1\ \};}
+\DoxyCodeLine{00038\ \ \ \ \ sf::Vector2f\ tinyPieceBoardCoords\{\ -\/1,-\/1\ \};}
+\DoxyCodeLine{00039\ \};}
+
+\end{DoxyCode}

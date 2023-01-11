@@ -1,0 +1,68 @@
+\hypertarget{class_grid}{}\doxysection{Grid Class Reference}
+\label{class_grid}\index{Grid@{Grid}}
+
+
+The main \mbox{\hyperlink{class_grid}{Grid}} of indivual cells.  
+
+
+
+
+{\ttfamily \#include $<$Grid.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_grid_a679fc973e866aa0a7309bf91398ed9ed}\label{class_grid_a679fc973e866aa0a7309bf91398ed9ed}} 
+\mbox{\hyperlink{class_cell}{Cell}} $\ast$ {\bfseries at} (int t\+\_\+index)
+\item 
+\mbox{\Hypertarget{class_grid_afb0a12e73a8b0ca827fc3cc1b65417e5}\label{class_grid_afb0a12e73a8b0ca827fc3cc1b65417e5}} 
+void {\bfseries setup\+Grid} ()
+\begin{DoxyCompactList}\small\item\em Sets up grid with information such as each cells location, color, size, etc. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_grid_adadc199a64bb427352515ba37b821426}\label{class_grid_adadc199a64bb427352515ba37b821426}} 
+void {\bfseries draw} (sf\+::\+Render\+Window \&m\+\_\+window)
+\item 
+\mbox{\Hypertarget{class_grid_a6be196f7ae95c925c71a31e742f36853}\label{class_grid_a6be196f7ae95c925c71a31e742f36853}} 
+void {\bfseries update} (sf\+::\+Render\+Window \&t\+\_\+window)
+\item 
+\mbox{\Hypertarget{class_grid_aa12556287f108cec91df1fae16ba7cd2}\label{class_grid_aa12556287f108cec91df1fae16ba7cd2}} 
+\mbox{\hyperlink{class_cell}{Cell}} $\ast$ {\bfseries Get\+Intersects} (sf\+::\+Vector2f pos)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_grid_ae25afb281fed041c4f2718d0f8eea3ee}\label{class_grid_ae25afb281fed041c4f2718d0f8eea3ee}} 
+sf\+::\+Vector2f {\bfseries offset} \{ 350, 0 \}
+\item 
+\mbox{\Hypertarget{class_grid_aa079fbbafcf5ea4bb3d5b0048e534f5d}\label{class_grid_aa079fbbafcf5ea4bb3d5b0048e534f5d}} 
+sf\+::\+Color {\bfseries default\+Color} \{ 150, 78, 0, 255 \}
+\item 
+\mbox{\Hypertarget{class_grid_ad98898352877b41bf7101a38f04d6fad}\label{class_grid_ad98898352877b41bf7101a38f04d6fad}} 
+sf\+::\+Color {\bfseries highlighted\+Color} \{ 170, 98, 20, 255 \}
+\item 
+\mbox{\Hypertarget{class_grid_a10ab0121317787a142961155dd260959}\label{class_grid_a10ab0121317787a142961155dd260959}} 
+sf\+::\+Font {\bfseries id\+Font}
+\item 
+\mbox{\Hypertarget{class_grid_a3bfdab70f8e29a3ddf6bf7e2345f3c08}\label{class_grid_a3bfdab70f8e29a3ddf6bf7e2345f3c08}} 
+\mbox{\hyperlink{class_cell}{Cell}} {\bfseries cell\+Grid} \mbox{[}XAmount\+Cells\mbox{]}\mbox{[}YAmount\+Cells\mbox{]}
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_grid_a92aacb1f27422212fe26af2c442b389e}\label{class_grid_a92aacb1f27422212fe26af2c442b389e}} 
+static const int {\bfseries XAmount\+Cells} = 4
+\item 
+\mbox{\Hypertarget{class_grid_abf25bdfc8e9390bdda53b1b5e4252c1c}\label{class_grid_abf25bdfc8e9390bdda53b1b5e4252c1c}} 
+static const int {\bfseries YAmount\+Cells} = 4
+\item 
+\mbox{\Hypertarget{class_grid_af5f4aa35e53bfb6a36afaedc0d2712fc}\label{class_grid_af5f4aa35e53bfb6a36afaedc0d2712fc}} 
+static const int {\bfseries Total\+Cells} = 16
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+The main \mbox{\hyperlink{class_grid}{Grid}} of indivual cells. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/andre/\+Documents/\+Git\+Hub/\+Gobblet\+Game/\+Gobblet/\+Gobblet/Grid.\+h\item 
+C\+:/\+Users/andre/\+Documents/\+Git\+Hub/\+Gobblet\+Game/\+Gobblet/\+Gobblet/Grid.\+cpp\end{DoxyCompactItemize}

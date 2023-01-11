@@ -2,7 +2,9 @@
 #include <vector>
 #include <queue>
 #include <SFML/Graphics.hpp>
-
+/// <summary>
+/// The grid's individual cells
+/// </summary>
 class Cell
 {
 public:

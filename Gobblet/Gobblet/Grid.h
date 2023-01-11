@@ -7,7 +7,9 @@
 #include <string>
 #include "Cell.h"
 #include "GLOBALS.h"
-
+/// <summary>
+/// The main Grid of indivual cells
+/// </summary>
 class Grid
 {
 public:

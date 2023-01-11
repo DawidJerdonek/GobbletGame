@@ -1,5 +1,8 @@
 #pragma once
 #include <SFML/Graphics.hpp>
+/// <summary>
+/// The Players vars and gameplay/board pieces
+/// </summary>
 class Player
 {
 public:

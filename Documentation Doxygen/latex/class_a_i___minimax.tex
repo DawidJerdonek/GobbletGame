@@ -1,0 +1,136 @@
+\hypertarget{class_a_i___minimax}{}\doxysection{AI\+\_\+\+Minimax Class Reference}
+\label{class_a_i___minimax}\index{AI\_Minimax@{AI\_Minimax}}
+
+
+The main AI code with minimax.  
+
+
+
+
+{\ttfamily \#include $<$AI\+\_\+\+Minimax.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+std\+::pair$<$ int, std\+::pair$<$ int, int $>$ $>$ \mbox{\hyperlink{class_a_i___minimax_aa404eed98e5fc7fccac0cdf9641cf468}{minmax}} (\mbox{\hyperlink{class_grid}{Grid}} \&t\+\_\+grid, int t\+\_\+depth, bool t\+\_\+is\+Players\+Turn, int t\+\_\+alpha, int t\+\_\+beta, bool \&my\+Bool)
+\begin{DoxyCompactList}\small\item\em an alg of minimax for generating what tile the AI should move to \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_a_i___minimax_ad88d3995535bf0319cfeb7e7d899b562}{move\+Piece}} (sf\+::\+Vector2f t\+\_\+pos, \mbox{\hyperlink{class_grid}{Grid}} \&t\+\_\+grid, bool is\+Player)
+\begin{DoxyCompactList}\small\item\em moves pieces for alg minimax \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_a_i___minimax_a9dfab02ef70d2820f99a15add01a2fc4}{un\+Move\+Piece}} (sf\+::\+Vector2f t\+\_\+pos, \mbox{\hyperlink{class_grid}{Grid}} \&t\+\_\+grid)
+\begin{DoxyCompactList}\small\item\em unmoves pieces for alg minimax \end{DoxyCompactList}\item 
+sf\+::\+Circle\+Shape \& \mbox{\hyperlink{class_a_i___minimax_adc6e841c333a8064bf782b3d8d42fa06}{decide\+Piece\+For\+Moving}} (\mbox{\hyperlink{class_grid}{Grid}} \&t\+\_\+grid, \mbox{\hyperlink{class_n_p_c}{NPC}} t\+\_\+npcs\mbox{[}3\mbox{]})
+\begin{DoxyCompactList}\small\item\em Decides what piece to play in game and alg minimax. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_a_i___minimax_a0c2fe1c4ea028b53d00f56a54643e916}\label{class_a_i___minimax_a0c2fe1c4ea028b53d00f56a54643e916}} 
+int {\bfseries get\+\_\+board\+\_\+state} (\mbox{\hyperlink{class_grid}{Grid}} \&t\+\_\+grid)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_a_i___minimax_a1dcf26912d20726019654b818f23d888}\label{class_a_i___minimax_a1dcf26912d20726019654b818f23d888}} 
+sf\+::\+Circle\+Shape $\ast$ {\bfseries final\+Piece} = nullptr
+\item 
+\mbox{\Hypertarget{class_a_i___minimax_a7113882ff929d7780c6fdf905fc7e8ee}\label{class_a_i___minimax_a7113882ff929d7780c6fdf905fc7e8ee}} 
+bool {\bfseries has\+Moved} = false
+\item 
+\mbox{\Hypertarget{class_a_i___minimax_a58e3def07ae95fb80cc39e298f3228a0}\label{class_a_i___minimax_a58e3def07ae95fb80cc39e298f3228a0}} 
+int {\bfseries piece\+Index} = -\/1
+\item 
+\mbox{\Hypertarget{class_a_i___minimax_ab368cdcb04d7d5667ee03fe08950e018}\label{class_a_i___minimax_ab368cdcb04d7d5667ee03fe08950e018}} 
+int {\bfseries npc\+Index} = -\/1
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+The main AI code with minimax. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_a_i___minimax_adc6e841c333a8064bf782b3d8d42fa06}\label{class_a_i___minimax_adc6e841c333a8064bf782b3d8d42fa06}} 
+\index{AI\_Minimax@{AI\_Minimax}!decidePieceForMoving@{decidePieceForMoving}}
+\index{decidePieceForMoving@{decidePieceForMoving}!AI\_Minimax@{AI\_Minimax}}
+\doxysubsubsection{\texorpdfstring{decidePieceForMoving()}{decidePieceForMoving()}}
+{\footnotesize\ttfamily sf\+::\+Circle\+Shape \& AI\+\_\+\+Minimax\+::decide\+Piece\+For\+Moving (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_grid}{Grid}} \&}]{t\+\_\+grid,  }\item[{\mbox{\hyperlink{class_n_p_c}{NPC}}}]{t\+\_\+npcs\mbox{[}3\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+Decides what piece to play in game and alg minimax. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em t\+\_\+grid} & \\
+\hline
+{\em t\+\_\+npcs} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_a_i___minimax_aa404eed98e5fc7fccac0cdf9641cf468}\label{class_a_i___minimax_aa404eed98e5fc7fccac0cdf9641cf468}} 
+\index{AI\_Minimax@{AI\_Minimax}!minmax@{minmax}}
+\index{minmax@{minmax}!AI\_Minimax@{AI\_Minimax}}
+\doxysubsubsection{\texorpdfstring{minmax()}{minmax()}}
+{\footnotesize\ttfamily std\+::pair$<$ int, std\+::pair$<$ int, int $>$ $>$ AI\+\_\+\+Minimax\+::minmax (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_grid}{Grid}} \&}]{t\+\_\+grid,  }\item[{int}]{t\+\_\+depth,  }\item[{bool}]{t\+\_\+is\+Players\+Turn,  }\item[{int}]{t\+\_\+alpha,  }\item[{int}]{t\+\_\+beta,  }\item[{bool \&}]{my\+Bool }\end{DoxyParamCaption})}
+
+
+
+an alg of minimax for generating what tile the AI should move to 
+
+
+\begin{DoxyParams}{Parameters}
+{\em t\+\_\+grid} & \\
+\hline
+{\em t\+\_\+depth} & \\
+\hline
+{\em t\+\_\+is\+Players\+Turn} & \\
+\hline
+{\em t\+\_\+alpha} & \\
+\hline
+{\em t\+\_\+beta} & \\
+\hline
+{\em my\+Bool} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_a_i___minimax_ad88d3995535bf0319cfeb7e7d899b562}\label{class_a_i___minimax_ad88d3995535bf0319cfeb7e7d899b562}} 
+\index{AI\_Minimax@{AI\_Minimax}!movePiece@{movePiece}}
+\index{movePiece@{movePiece}!AI\_Minimax@{AI\_Minimax}}
+\doxysubsubsection{\texorpdfstring{movePiece()}{movePiece()}}
+{\footnotesize\ttfamily void AI\+\_\+\+Minimax\+::move\+Piece (\begin{DoxyParamCaption}\item[{sf\+::\+Vector2f}]{t\+\_\+pos,  }\item[{\mbox{\hyperlink{class_grid}{Grid}} \&}]{t\+\_\+grid,  }\item[{bool}]{is\+Player }\end{DoxyParamCaption})}
+
+
+
+moves pieces for alg minimax 
+
+
+\begin{DoxyParams}{Parameters}
+{\em t\+\_\+pos} & \\
+\hline
+{\em t\+\_\+grid} & \\
+\hline
+{\em is\+Player} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_a_i___minimax_a9dfab02ef70d2820f99a15add01a2fc4}\label{class_a_i___minimax_a9dfab02ef70d2820f99a15add01a2fc4}} 
+\index{AI\_Minimax@{AI\_Minimax}!unMovePiece@{unMovePiece}}
+\index{unMovePiece@{unMovePiece}!AI\_Minimax@{AI\_Minimax}}
+\doxysubsubsection{\texorpdfstring{unMovePiece()}{unMovePiece()}}
+{\footnotesize\ttfamily void AI\+\_\+\+Minimax\+::un\+Move\+Piece (\begin{DoxyParamCaption}\item[{sf\+::\+Vector2f}]{t\+\_\+pos,  }\item[{\mbox{\hyperlink{class_grid}{Grid}} \&}]{t\+\_\+grid }\end{DoxyParamCaption})}
+
+
+
+unmoves pieces for alg minimax 
+
+
+\begin{DoxyParams}{Parameters}
+{\em t\+\_\+pos} & \\
+\hline
+{\em t\+\_\+grid} & \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/andre/\+Documents/\+Git\+Hub/\+Gobblet\+Game/\+Gobblet/\+Gobblet/AI\+\_\+\+Minimax.\+h\item 
+C\+:/\+Users/andre/\+Documents/\+Git\+Hub/\+Gobblet\+Game/\+Gobblet/\+Gobblet/AI\+\_\+\+Minimax.\+cpp\end{DoxyCompactItemize}

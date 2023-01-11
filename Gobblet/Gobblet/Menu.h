@@ -4,6 +4,9 @@
 #include "GLOBALS.h"
 
 #pragma once
+/// <summary>
+/// The main SFML menu
+/// </summary>
 class Menu
 {
 public:

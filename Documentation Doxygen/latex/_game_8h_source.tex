@@ -1,0 +1,62 @@
+\hypertarget{_game_8h_source}{}\doxysection{Game.\+h}
+\label{_game_8h_source}\index{C:/Users/andre/Documents/GitHub/GobbletGame/Gobblet/Gobblet/Game.h@{C:/Users/andre/Documents/GitHub/GobbletGame/Gobblet/Gobblet/Game.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#ifndef\ GAME\_HPP}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#define\ GAME\_HPP}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ <SFML/Graphics.hpp>}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ "{}Grid.h"{}}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ "{}Player.h"{}}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ "{}NPC.h"{}}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ "{}GLOBALS.h"{}}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ "{}AI\_Minimax.h"{}}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ "{}Menu.h"{}}}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_game}{Game}}}
+\DoxyCodeLine{00020\ \{}
+\DoxyCodeLine{00021\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00022\ \ \ \ \ \mbox{\hyperlink{class_game_ad59df6562a58a614fda24622d3715b65}{Game}}();}
+\DoxyCodeLine{00023\ \ \ \ \ \mbox{\hyperlink{class_game_ae3d112ca6e0e55150d2fdbc704474530}{\string~Game}}();}
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_game_a1ab78f5ed0d5ea879157357cf2fb2afa}{run}}();}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00029\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keywordtype}{void}\ processEvents();}
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keywordtype}{void}\ processKeys(sf::Event\ t\_event);}
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{keywordtype}{void}\ update(sf::Time\ t\_deltaTime);}
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{keywordtype}{void}\ snapBoardPieces();}
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{keywordtype}{void}\ checkForNPCUnderCell(\textcolor{keywordtype}{int}\ x,\ \textcolor{keywordtype}{int}\ y);}
+\DoxyCodeLine{00036\ \ \ \ \ \textcolor{keywordtype}{void}\ setupInitialPositions();}
+\DoxyCodeLine{00037\ \ \ \ \ \textcolor{keywordtype}{void}\ render();}
+\DoxyCodeLine{00038\ \ \ \ \ \textcolor{keywordtype}{void}\ moveNPC();}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00040\ \ \ \ \ sf::RenderWindow\ m\_window;\ \textcolor{comment}{//\ main\ SFML\ window}}
+\DoxyCodeLine{00041\ \ \ \ \ \textcolor{keywordtype}{bool}\ m\_exitGame;\ \textcolor{comment}{//\ control\ exiting\ game}}
+\DoxyCodeLine{00042\ \ \ \ \ \textcolor{keywordtype}{bool}\ m\_isPlayersTurn\ =\ \textcolor{keyword}{true};\ \textcolor{comment}{//Check\ if\ it\ is\ player\ or\ AI\ turn}}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00044\ \ \ \ \ \textcolor{keywordtype}{bool}\ m\_gameWon\ =\ \textcolor{keyword}{false};\ \textcolor{comment}{//Check\ if\ game\ is\ Won}}
+\DoxyCodeLine{00045\ \ \ \ \ \textcolor{keywordtype}{bool}\ m\_gameLost\ =\ \textcolor{keyword}{false};\ \textcolor{comment}{//Check\ if\ game\ is\ Lost}}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00047\ \ \ \ \ \textcolor{keywordtype}{int}\ m\_difficulty\ =\ 1;\ \textcolor{comment}{//Sets\ difficulty\ Level}}
+\DoxyCodeLine{00048\ }
+\DoxyCodeLine{00049\ \ \ \ \ sf::Font\ m\_font;}
+\DoxyCodeLine{00050\ \ \ \ \ sf::Text\ m\_loseWinText;\ \textcolor{comment}{//Setup\ text\ for\ winning\ and\ losing}}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00052\ \ \ \ \ \mbox{\hyperlink{class_menu}{Menu}}\ m\_menu;}
+\DoxyCodeLine{00053\ \ \ \ \ \mbox{\hyperlink{class_grid}{Grid}}\ m\_grid;}
+\DoxyCodeLine{00054\ \ \ \ \ gameMode\ m\_state\ =\ MENU;\ \textcolor{comment}{//Set\ initial\ state\ to\ Menu\ to\ choose\ difficulty\ first}}
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00056\ \ \ \ \ \mbox{\hyperlink{class_player}{Player}}\ m\_player[3];\ \textcolor{comment}{//3\ sets\ of\ sized\ pieces}}
+\DoxyCodeLine{00057\ \ \ \ \ \textcolor{comment}{//Player\ m\_player2[3];\ //For\ Player\ vs\ Player\ mode}}
+\DoxyCodeLine{00058\ }
+\DoxyCodeLine{00059\ \ \ \ \ \mbox{\hyperlink{class_n_p_c}{NPC}}\ m\_npc[3];\ \textcolor{comment}{//3\ sets\ of\ sized\ pieces}}
+\DoxyCodeLine{00060\ \ \ \ \ \textcolor{comment}{//NPC\ m\_npc2[3]\ //For\ AI\ vs\ AI\ mode}}
+\DoxyCodeLine{00061\ }
+\DoxyCodeLine{00062\ \ \ \ \ \mbox{\hyperlink{class_a_i___minimax}{AI\_Minimax}}\ AI;}
+\DoxyCodeLine{00063\ \};}
+\DoxyCodeLine{00064\ }
+\DoxyCodeLine{00065\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ !GAME\_HPP}}
+\DoxyCodeLine{00066\ }
+
+\end{DoxyCode}

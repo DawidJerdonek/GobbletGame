@@ -1,0 +1,80 @@
+\hypertarget{class_n_p_c}{}\doxysection{NPC Class Reference}
+\label{class_n_p_c}\index{NPC@{NPC}}
+
+
+The \mbox{\hyperlink{class_n_p_c}{NPC}}\textquotesingle{}s pieces and other required variables.  
+
+
+
+
+{\ttfamily \#include $<$NPC.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_n_p_c_a801fce4236b676f884343231e35a7ae1}\label{class_n_p_c_a801fce4236b676f884343231e35a7ae1}} 
+void {\bfseries update} ()
+\item 
+\mbox{\Hypertarget{class_n_p_c_a56dd8a7abb99cd790c14e1c79cd34887}\label{class_n_p_c_a56dd8a7abb99cd790c14e1c79cd34887}} 
+void {\bfseries render} (sf\+::\+Render\+Window \&t\+\_\+window)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_n_p_c_ad5ccc1bd6abff120b3e4be3a195cc776}\label{class_n_p_c_ad5ccc1bd6abff120b3e4be3a195cc776}} 
+sf\+::\+Circle\+Shape {\bfseries m\+\_\+large\+Piece}
+\item 
+\mbox{\Hypertarget{class_n_p_c_ae36e73821c1feb3ac6b88149edf49842}\label{class_n_p_c_ae36e73821c1feb3ac6b88149edf49842}} 
+sf\+::\+Circle\+Shape {\bfseries m\+\_\+medium\+Piece}
+\item 
+\mbox{\Hypertarget{class_n_p_c_a184fdc06701db5b9f0f7760f27e6da42}\label{class_n_p_c_a184fdc06701db5b9f0f7760f27e6da42}} 
+sf\+::\+Circle\+Shape {\bfseries m\+\_\+small\+Piece}
+\item 
+\mbox{\Hypertarget{class_n_p_c_a0959a43c1d6a71bd8110f3f794d497f2}\label{class_n_p_c_a0959a43c1d6a71bd8110f3f794d497f2}} 
+sf\+::\+Circle\+Shape {\bfseries m\+\_\+tiny\+Piece}
+\item 
+\mbox{\Hypertarget{class_n_p_c_a62228c0bf2b89f7954090a2cabc7b853}\label{class_n_p_c_a62228c0bf2b89f7954090a2cabc7b853}} 
+bool {\bfseries large\+Piece\+In\+Play} = false
+\item 
+\mbox{\Hypertarget{class_n_p_c_aff7ca8733ba1c570ed4fcec67ade0453}\label{class_n_p_c_aff7ca8733ba1c570ed4fcec67ade0453}} 
+bool {\bfseries medium\+Piece\+In\+Play} = false
+\item 
+\mbox{\Hypertarget{class_n_p_c_a31c50f4a7a95aa4f11ed443e7a06acfe}\label{class_n_p_c_a31c50f4a7a95aa4f11ed443e7a06acfe}} 
+bool {\bfseries small\+Piece\+In\+Play} = false
+\item 
+\mbox{\Hypertarget{class_n_p_c_ad005d31b4807c6f3b7c91e9ffd014e18}\label{class_n_p_c_ad005d31b4807c6f3b7c91e9ffd014e18}} 
+bool {\bfseries tiny\+Piece\+In\+Play} = false
+\item 
+\mbox{\Hypertarget{class_n_p_c_a33ed4c2109169f7cb366c4e040216d68}\label{class_n_p_c_a33ed4c2109169f7cb366c4e040216d68}} 
+int {\bfseries large\+Piece\+YCoords} = 200
+\item 
+\mbox{\Hypertarget{class_n_p_c_a56fca47ed8ef2e4eef659f56f00effc3}\label{class_n_p_c_a56fca47ed8ef2e4eef659f56f00effc3}} 
+int {\bfseries medium\+Piece\+YCoords} = 400
+\item 
+\mbox{\Hypertarget{class_n_p_c_a93d5c85da188b5dcfaf8b1f3473f034e}\label{class_n_p_c_a93d5c85da188b5dcfaf8b1f3473f034e}} 
+int {\bfseries small\+Piece\+YCoords} = 600
+\item 
+\mbox{\Hypertarget{class_n_p_c_adb968e057f66f7fc56ed7a54df1d4aa8}\label{class_n_p_c_adb968e057f66f7fc56ed7a54df1d4aa8}} 
+int {\bfseries tiny\+Piece\+YCoords} = 800
+\item 
+\mbox{\Hypertarget{class_n_p_c_a2c968f119d558a3ec96ea792bcfd07a2}\label{class_n_p_c_a2c968f119d558a3ec96ea792bcfd07a2}} 
+sf\+::\+Vector2f {\bfseries large\+Piece\+Board\+Coords} \{ -\/1,-\/1 \}
+\item 
+\mbox{\Hypertarget{class_n_p_c_aa33bf83ab054c54e6b5e9c4481e979a9}\label{class_n_p_c_aa33bf83ab054c54e6b5e9c4481e979a9}} 
+sf\+::\+Vector2f {\bfseries medium\+Piece\+Board\+Coords} \{ -\/1,-\/1 \}
+\item 
+\mbox{\Hypertarget{class_n_p_c_a9cb53000890763ba4ae7f909ba8a5824}\label{class_n_p_c_a9cb53000890763ba4ae7f909ba8a5824}} 
+sf\+::\+Vector2f {\bfseries small\+Piece\+Board\+Coords} \{ -\/1,-\/1 \}
+\item 
+\mbox{\Hypertarget{class_n_p_c_a24357f42eb010ee1b0bbbb1211c4f00b}\label{class_n_p_c_a24357f42eb010ee1b0bbbb1211c4f00b}} 
+sf\+::\+Vector2f {\bfseries tiny\+Piece\+Board\+Coords} \{ -\/1,-\/1 \}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+The \mbox{\hyperlink{class_n_p_c}{NPC}}\textquotesingle{}s pieces and other required variables. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/andre/\+Documents/\+Git\+Hub/\+Gobblet\+Game/\+Gobblet/\+Gobblet/NPC.\+h\item 
+C\+:/\+Users/andre/\+Documents/\+Git\+Hub/\+Gobblet\+Game/\+Gobblet/\+Gobblet/NPC.\+cpp\end{DoxyCompactItemize}

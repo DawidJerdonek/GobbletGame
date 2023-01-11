@@ -1,7 +1,9 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 
-
+/// <summary>
+/// The NPC's pieces and other required variables
+/// </summary>
 class NPC
 {
 public:

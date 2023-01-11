@@ -1,0 +1,42 @@
+\hypertarget{_grid_8h_source}{}\doxysection{Grid.\+h}
+\label{_grid_8h_source}\index{C:/Users/andre/Documents/GitHub/GobbletGame/Gobblet/Gobblet/Grid.h@{C:/Users/andre/Documents/GitHub/GobbletGame/Gobblet/Gobblet/Grid.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <SFML/Graphics.hpp>}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <queue>}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ "{}Cell.h"{}}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ "{}GLOBALS.h"{}}}
+\DoxyCodeLine{00013\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_grid}{Grid}}}
+\DoxyCodeLine{00014\ \{}
+\DoxyCodeLine{00015\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00016\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ XAmountCells\ =\ 4;}
+\DoxyCodeLine{00017\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ YAmountCells\ =\ 4;}
+\DoxyCodeLine{00018\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ TotalCells\ =\ 16;}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ \ \ \ \ sf::Vector2f\ offset\{\ 350,\ 0\ \};}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ \ \ \ \ \mbox{\hyperlink{class_cell}{Cell}}*\ at(\textcolor{keywordtype}{int}\ t\_index);}
+\DoxyCodeLine{00023\ \ \ \ \ }
+\DoxyCodeLine{00024\ \ \ \ \ \mbox{\hyperlink{class_grid}{Grid}}();}
+\DoxyCodeLine{00025\ \ \ \ \ \mbox{\hyperlink{class_grid}{\string~Grid}}();}
+\DoxyCodeLine{00026\ \ \ \ \ }
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_grid_afb0a12e73a8b0ca827fc3cc1b65417e5}{setupGrid}}();}
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{keywordtype}{void}\ draw(sf::RenderWindow\&\ m\_window);}
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{keywordtype}{void}\ update(sf::RenderWindow\&\ t\_window);}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00031\ \ \ \ \ sf::Color\ defaultColor\{\ 150,\ 78,\ 0,\ 255\ \};}
+\DoxyCodeLine{00032\ \ \ \ \ sf::Color\ highlightedColor\{\ 170,\ 98,\ 20,\ 255\ \};}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00034\ \ \ \ \ sf::Font\ idFont;}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00036\ \ \ \ \ \mbox{\hyperlink{class_cell}{Cell}}\ cellGrid[XAmountCells][YAmountCells];}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00038\ \ \ \ \ \mbox{\hyperlink{class_cell}{Cell}}*\ GetIntersects(sf::Vector2f\ pos);}
+\DoxyCodeLine{00039\ \};}
+
+\end{DoxyCode}
