@@ -230,6 +230,8 @@ void AI_Minimax::unMovePiece(sf::Vector2f t_pos, Grid& t_grid)
 sf::CircleShape& AI_Minimax::decidePieceForMoving(Grid& t_grid, NPC t_npcs[3])
 {
 	sf::CircleShape* t_circleShape = nullptr;
+	pieceIndex = -1;
+	npcIndex = -1;
 
 	for (int pieceToMove = 0; pieceToMove < 4; pieceToMove++)
 	{
@@ -256,6 +258,7 @@ sf::CircleShape& AI_Minimax::decidePieceForMoving(Grid& t_grid, NPC t_npcs[3])
 					t_npcs[i].largePieceInPlay = true;
 					hasMoved = true;
 					pieceIndex = 0;
+					npcIndex = i;
 					break;
 				default:
 					break;
@@ -278,6 +281,7 @@ sf::CircleShape& AI_Minimax::decidePieceForMoving(Grid& t_grid, NPC t_npcs[3])
 					t_npcs[i].mediumPieceInPlay = true;
 					hasMoved = true;
 					pieceIndex = 1;
+					npcIndex = i;
 					break;
 				default:
 					break;
@@ -300,6 +304,7 @@ sf::CircleShape& AI_Minimax::decidePieceForMoving(Grid& t_grid, NPC t_npcs[3])
 					t_npcs[i].smallPieceInPlay = true;
 					hasMoved = true;
 					pieceIndex = 2;
+					npcIndex = i;
 					break;
 				default:
 					break;
@@ -321,7 +326,8 @@ sf::CircleShape& AI_Minimax::decidePieceForMoving(Grid& t_grid, NPC t_npcs[3])
 					t_circleShape = &t_npcs[i].m_tinyPiece;
 					t_npcs[i].tinyPieceInPlay = true;
 					hasMoved = true;
-					pieceIndex = 3;
+					pieceIndex = 3;		
+					npcIndex = i;
 					break;
 				default:
 					break;

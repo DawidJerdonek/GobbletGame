@@ -26,5 +26,5 @@ public:
 	
 	int pieceIndex = -1;
 
-	std::vector<std::pair<int, int>> piecesOrder;
+	std::vector<std::pair<int,std::pair<int, int>>> piecesOrder;
 };

@@ -16,6 +16,7 @@ public:
 	sf::CircleShape* finalPiece = nullptr;
 	bool hasMoved = false;
 	int pieceIndex = -1;
+	int npcIndex = -1;
 
 private:
 	sf::Vector2f oldPos{ -1,-1 };

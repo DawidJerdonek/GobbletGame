@@ -33,6 +33,7 @@ private:
 	void processKeys(sf::Event t_event);
 	void update(sf::Time t_deltaTime);
 	void snapBoardPieces();
+	void checkForNPCUnderCell(int x, int y);
 	void setupInitialPositions();
 	void render();
 	void moveNPC();
