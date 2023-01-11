@@ -123,44 +123,117 @@ void Game::snapBoardPieces()
 				{
 					if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Left) == false)
 					{
-						m_player[i].m_largePieceSnapped = true;
-						m_player[i].m_largePiece.setPosition(m_grid.cellGrid[x][y].center.x, m_grid.cellGrid[x][y].center.y);
-						m_grid.cellGrid[x][y].IsOccupiedByPlayer = true;
-						m_isPlayersTurn = false;
-						moveNPC();
+						if (m_player[i].m_largePieceSnapped == false)
+						{
+							m_player[i].m_largePieceSnapped = true;
+							m_player[i].m_largePiece.setPosition(m_grid.cellGrid[x][y].center.x, m_grid.cellGrid[x][y].center.y);
+							m_grid.cellGrid[x][y].IsOccupiedByPlayer = true;
+							m_player[i].m_largePiecePreviousPos = sf::Vector2f( x,y );
+							m_isPlayersTurn = false;
+							moveNPC();
+
+						}
+						else if (m_player[i].m_largePieceSnapped == true)
+						{
+							m_player[i].m_largePiece.setPosition(m_grid.cellGrid[x][y].center.x, m_grid.cellGrid[x][y].center.y);
+							m_grid.cellGrid[x][y].IsOccupiedByPlayer = true;
+
+							//Set new Previous
+							int prevPosX = m_player[i].m_largePiecePreviousPos.x;
+							int prevPosY = m_player[i].m_largePiecePreviousPos.y;
+							m_grid.cellGrid[prevPosX][prevPosY].IsOccupiedByPlayer = false;
+							m_player[i].m_largePiecePreviousPos = sf::Vector2f( x,y );
+
+							m_isPlayersTurn = false;
+							moveNPC();
+						}
 					}
 				}
 				else if (m_grid.cellGrid[x][y].cellBody.getGlobalBounds().contains(m_player[i].m_mediumPiece.getPosition()) && !m_grid.cellGrid[x][y].IsOccupiedByNPC && !m_grid.cellGrid[x][y].IsOccupiedByPlayer)
 				{
 					if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Left) == false)
 					{
-						m_player[i].m_mediumPieceSnapped = true;
-						m_player[i].m_mediumPiece.setPosition(m_grid.cellGrid[x][y].center.x, m_grid.cellGrid[x][y].center.y);
-						m_grid.cellGrid[x][y].IsOccupiedByPlayer = true;
-						m_isPlayersTurn = false;
-						moveNPC();
+						if (m_player[i].m_mediumPieceSnapped == false)
+						{
+							m_player[i].m_mediumPieceSnapped = true;
+							m_player[i].m_mediumPiece.setPosition(m_grid.cellGrid[x][y].center.x, m_grid.cellGrid[x][y].center.y);
+							m_grid.cellGrid[x][y].IsOccupiedByPlayer = true;
+							m_player[i].m_mediumPiecePreviousPos = sf::Vector2f(x, y);
+							m_isPlayersTurn = false;
+							moveNPC();
+						}
+						else if (m_player[i].m_mediumPieceSnapped == true)
+						{
+							m_player[i].m_mediumPiece.setPosition(m_grid.cellGrid[x][y].center.x, m_grid.cellGrid[x][y].center.y);
+							m_grid.cellGrid[x][y].IsOccupiedByPlayer = true;
+
+							//Set new Previous
+							int prevPosX = m_player[i].m_mediumPiecePreviousPos.x;
+							int prevPosY = m_player[i].m_mediumPiecePreviousPos.y;
+							m_grid.cellGrid[prevPosX][prevPosY].IsOccupiedByPlayer = false;
+							m_player[i].m_mediumPiecePreviousPos = sf::Vector2f(x, y);
+
+							m_isPlayersTurn = false;
+							moveNPC();
+						}
 					}
 				}
 				else if (m_grid.cellGrid[x][y].cellBody.getGlobalBounds().contains(m_player[i].m_smallPiece.getPosition()) && !m_grid.cellGrid[x][y].IsOccupiedByNPC && !m_grid.cellGrid[x][y].IsOccupiedByPlayer)
 				{
 					if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Left) == false)
 					{
-						m_player[i].m_smallPieceSnapped = true;
-						m_player[i].m_smallPiece.setPosition(m_grid.cellGrid[x][y].center.x, m_grid.cellGrid[x][y].center.y);
-						m_grid.cellGrid[x][y].IsOccupiedByPlayer = true;
-						m_isPlayersTurn = false;
-						moveNPC();
+						if (m_player[i].m_smallPieceSnapped == false)
+						{
+							m_player[i].m_smallPieceSnapped = true;
+							m_player[i].m_smallPiece.setPosition(m_grid.cellGrid[x][y].center.x, m_grid.cellGrid[x][y].center.y);
+							m_grid.cellGrid[x][y].IsOccupiedByPlayer = true;
+							m_player[i].m_smallPiecePreviousPos = sf::Vector2f(x, y);
+							m_isPlayersTurn = false;
+							moveNPC();
+						}
+						else if (m_player[i].m_smallPieceSnapped == true)
+						{
+							m_player[i].m_smallPiece.setPosition(m_grid.cellGrid[x][y].center.x, m_grid.cellGrid[x][y].center.y);
+							m_grid.cellGrid[x][y].IsOccupiedByPlayer = true;
+
+							//Set new Previous
+							int prevPosX = m_player[i].m_smallPiecePreviousPos.x;
+							int prevPosY = m_player[i].m_smallPiecePreviousPos.y;
+							m_grid.cellGrid[prevPosX][prevPosY].IsOccupiedByPlayer = false;
+							m_player[i].m_smallPiecePreviousPos = sf::Vector2f(x, y);
+
+							m_isPlayersTurn = false;
+							moveNPC();
+						}
 					}
 				}
 				else if (m_grid.cellGrid[x][y].cellBody.getGlobalBounds().contains(m_player[i].m_tinyPiece.getPosition()) && !m_grid.cellGrid[x][y].IsOccupiedByNPC && !m_grid.cellGrid[x][y].IsOccupiedByPlayer)
 				{
 					if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Left) == false)
 					{
-						m_player[i].m_tinyPieceSnapped = true;
-						m_player[i].m_tinyPiece.setPosition(m_grid.cellGrid[x][y].center.x, m_grid.cellGrid[x][y].center.y);
-						m_grid.cellGrid[x][y].IsOccupiedByPlayer = true;
-						m_isPlayersTurn = false;
-						moveNPC();
+						if (m_player[i].m_tinyPieceSnapped == false)
+						{
+							m_player[i].m_tinyPieceSnapped = true;
+							m_player[i].m_tinyPiece.setPosition(m_grid.cellGrid[x][y].center.x, m_grid.cellGrid[x][y].center.y);
+							m_grid.cellGrid[x][y].IsOccupiedByPlayer = true;
+							m_player[i].m_tinyPiecePreviousPos = sf::Vector2f(x, y);
+							m_isPlayersTurn = false;
+							moveNPC();
+						}
+						else if (m_player[i].m_tinyPieceSnapped == true)
+						{
+							m_player[i].m_tinyPiece.setPosition(m_grid.cellGrid[x][y].center.x, m_grid.cellGrid[x][y].center.y);
+							m_grid.cellGrid[x][y].IsOccupiedByPlayer = true;
+
+							//Set new Previous
+							int prevPosX = m_player[i].m_tinyPiecePreviousPos.x;
+							int prevPosY = m_player[i].m_tinyPiecePreviousPos.y;
+							m_grid.cellGrid[prevPosX][prevPosY].IsOccupiedByPlayer = false;
+							m_player[i].m_tinyPiecePreviousPos = sf::Vector2f(x, y);
+
+							m_isPlayersTurn = false;
+							moveNPC();
+						}
 					}
 				}
 			}

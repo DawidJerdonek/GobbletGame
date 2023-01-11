@@ -24,6 +24,8 @@ public:
 	bool m_smallPieceSnapped = false;
 	bool m_mediumPieceSnapped = false;
 	bool m_largePieceSnapped = false;
-
-
+	sf::Vector2f m_tinyPiecePreviousPos;
+	sf::Vector2f m_smallPiecePreviousPos;
+	sf::Vector2f m_mediumPiecePreviousPos;
+	sf::Vector2f m_largePiecePreviousPos;
 };
