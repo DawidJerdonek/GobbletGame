@@ -70,7 +70,6 @@ std::vector<std::pair<int, int>> AI_Minimax::get_occupied_positions_Player(Grid&
 	{
 		for (int j = 0; j < t_grid.YAmountCells; j++)
 		{
-
 			if (t_grid.cellGrid[i][j].piecesOrder.size() > 0)
 			{
 				if (t_grid.cellGrid[i][j].IsOccupiedByPlayer && t_grid.cellGrid[i][j].piecesOrder.at(t_grid.cellGrid[i][j].piecesOrder.size() - 1).first == 0)
@@ -171,14 +170,11 @@ std::pair<int, std::pair<int, int>> AI_Minimax::minmax(Grid& t_grid, int t_depth
 
 			if (best_score < score)
 			{
-				best_score = score - t_depth * 10;
+				best_score = score - t_depth * 3;
 				best_move = curr_move;
 
-				// Check if this branch's best move is worse than the best
-				// option of a previously search branch. If it is, skip it
 				t_alpha = std::max(t_alpha, best_score);
 				unMovePiece(sf::Vector2f(curr_move.first, curr_move.second), t_grid);
-
 
 				if (t_beta <= t_alpha)
 				{
@@ -192,11 +188,9 @@ std::pair<int, std::pair<int, int>> AI_Minimax::minmax(Grid& t_grid, int t_depth
 
 			if (best_score > score)
 			{
-				best_score = score + t_depth * 10;
+				best_score = score + t_depth * 3;
 				best_move = curr_move;
 
-				// Check if this branch's best move is worse than the best
-				// option of a previously search branch. If it is, skip it
 				t_beta = std::min(t_beta, best_score);
 				unMovePiece(sf::Vector2f(curr_move.first, curr_move.second), t_grid);
 

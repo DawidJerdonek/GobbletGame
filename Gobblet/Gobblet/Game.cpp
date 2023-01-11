@@ -99,17 +99,17 @@ void Game::processKeys(sf::Event t_event)
 
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Num1))
 		{
-			m_difficulty = 1;
+			m_difficulty = 0;
 			m_state = GAME;
 		}
 		else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Num2))
 		{
-			m_difficulty = 2;
+			m_difficulty = 100;
 			m_state = GAME;
 		}
 		else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Num3))
 		{
-			m_difficulty = 3;
+			m_difficulty = 250;
 			m_state = GAME;
 		}
 
@@ -517,7 +517,7 @@ void Game::moveNPC()
 
 		AI.finalPiece = &AI.decidePieceForMoving(m_grid, m_npc);
 
-		std::pair<int, std::pair<int, int>> move = AI.minmax(m_grid, 0, false, -1000, 1000, myBool);
+		std::pair<int, std::pair<int, int>> move = AI.minmax(m_grid, m_difficulty, false, -1000, 1000, myBool);
 
 		Cell& cell = m_grid.cellGrid[move.second.first][move.second.second];
 
