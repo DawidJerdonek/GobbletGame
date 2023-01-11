@@ -40,19 +40,19 @@ private:
 
 	sf::RenderWindow m_window; // main SFML window
 	bool m_exitGame; // control exiting game
-	bool m_isPlayersTurn = true;
+	bool m_isPlayersTurn = true; //Check if it is player or AI turn
 
-	bool m_gameWon = false;
-	bool m_gameLost = false;
+	bool m_gameWon = false; //Check if game is Won
+	bool m_gameLost = false; //Check if game is Lost
 
-	int m_difficulty = 1;
+	int m_difficulty = 1; //Sets difficulty Level
 
 	sf::Font m_font;
-	sf::Text m_loseWinText;
+	sf::Text m_loseWinText; //Setup text for winning and losing
 
 	Menu m_menu;
 	Grid m_grid;
-	gameMode m_state = MENU;
+	gameMode m_state = MENU; //Set initial state to Menu to choose difficulty first
 
 	Player m_player[3]; //3 sets of sized pieces
 	//Player m_player2[3]; //For Player vs Player mode

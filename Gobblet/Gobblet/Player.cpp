@@ -3,6 +3,8 @@
 
 Player::Player()
 {
+	//Setup each piece varying in size
+
 	m_largePiece.setFillColor(sf::Color::White);
 	m_largePiece.setRadius(100);
 	m_largePiece.setOutlineThickness(2);
@@ -38,14 +40,14 @@ Player::~Player()
 
 void Player::update(sf::RenderWindow& t_window, bool& t_playersTurn)
 {
-	sf::Vector2i mousePosition;
+	sf::Vector2i mousePosition; //Get onscreen mouse position
 	mousePosition = sf::Mouse::getPosition(t_window);
-	m_mouseLocation = { static_cast<float>(mousePosition.x),static_cast<float>(mousePosition.y) };
+	m_mouseLocation = { static_cast<float>(mousePosition.x),static_cast<float>(mousePosition.y) };//Convert Position to a Vector
 
+	//If it is the players turn
 	if (t_playersTurn)
 	{
-
-		if (m_largePiece.getGlobalBounds().contains(m_mouseLocation))
+		if (m_largePiece.getGlobalBounds().contains(m_mouseLocation))//Check for large piece
 		{
 			if (m_largePieceSnapped == false)
 			{
@@ -55,7 +57,7 @@ void Player::update(sf::RenderWindow& t_window, bool& t_playersTurn)
 				}
 			}
 		}
-		else if (m_mediumPiece.getGlobalBounds().contains(m_mouseLocation))
+		else if (m_mediumPiece.getGlobalBounds().contains(m_mouseLocation))//Check for medium piece
 		{
 			if (m_mediumPieceSnapped == false)
 			{
@@ -65,7 +67,7 @@ void Player::update(sf::RenderWindow& t_window, bool& t_playersTurn)
 				}
 			}
 		}
-		else if (m_smallPiece.getGlobalBounds().contains(m_mouseLocation))
+		else if (m_smallPiece.getGlobalBounds().contains(m_mouseLocation))//Check for small piece
 		{
 			if (m_smallPieceSnapped == false)
 			{
@@ -75,9 +77,50 @@ void Player::update(sf::RenderWindow& t_window, bool& t_playersTurn)
 				}
 			}
 		}
-		else if (m_tinyPiece.getGlobalBounds().contains(m_mouseLocation))
+		else if (m_tinyPiece.getGlobalBounds().contains(m_mouseLocation))//Check for tiny piece
 		{
 			if (m_tinyPieceSnapped == false)
+			{
+				if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Left))
+				{
+					m_tinyPiece.setPosition(m_mouseLocation);
+				}
+			}
+		}
+
+		if (m_largePieceSnapped == true)
+		{
+			if (m_largePiece.getGlobalBounds().contains(m_mouseLocation))
+			{
+				if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Left))
+				{
+					m_largePiece.setPosition(m_mouseLocation);
+				}
+			}
+		}
+		if (m_mediumPieceSnapped == true)
+		{
+			if (m_mediumPiece.getGlobalBounds().contains(m_mouseLocation))
+			{
+				if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Left))
+				{
+					m_mediumPiece.setPosition(m_mouseLocation);
+				}
+			}
+		}
+		if (m_smallPieceSnapped == true)
+		{
+			if (m_smallPiece.getGlobalBounds().contains(m_mouseLocation))
+			{
+				if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Left))
+				{
+					m_smallPiece.setPosition(m_mouseLocation);
+				}
+			}
+		}
+		if (m_mediumPieceSnapped == true)
+		{
+			if (m_tinyPiece.getGlobalBounds().contains(m_mouseLocation))
 			{
 				if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Left))
 				{

@@ -12,16 +12,19 @@ public:
 	void update();
 	void render(sf::RenderWindow& t_window);
 
+	// Create one set of pieces
 	sf::CircleShape m_largePiece;
 	sf::CircleShape m_mediumPiece;
 	sf::CircleShape m_smallPiece;
 	sf::CircleShape m_tinyPiece;
 
+	//Check if each piece is currently in play
 	bool largePieceInPlay = false;
 	bool mediumPieceInPlay = false;
 	bool smallPieceInPlay = false;
 	bool tinyPieceInPlay = false;
 
+	//Set initial position of pieces
 	int largePieceYCoords = 200;
 	int mediumPieceYCoords = 400;
 	int smallPieceYCoords = 600;

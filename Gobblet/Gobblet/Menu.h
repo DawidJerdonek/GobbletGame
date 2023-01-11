@@ -11,8 +11,6 @@ public:
 	Menu();
 	void render(sf::RenderWindow& t_window);
 
-	int difficulty = 1;
-
 private:
 
 	sf::Font m_font;

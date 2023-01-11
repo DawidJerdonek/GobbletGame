@@ -18,6 +18,7 @@ Game::Game() :
 	m_window{ sf::VideoMode{ xRes, yRes, 32U }, "Gobblet Game" },
 	m_exitGame{false} //when true game will exit
 {
+	//Load Font from File
 	if (!m_font.loadFromFile("Assets/Fonts/ariblk.ttf"))
 	{
 		std::cout << "error with font file file";
@@ -26,8 +27,9 @@ Game::Game() :
 	m_loseWinText.setCharacterSize(50);
 	m_loseWinText.setPosition(10,20);
 
-
+	//setup the board
 	m_grid.setupGrid();
+	//Set Initial Piece Positions
 	setupInitialPositions();
 }
 
@@ -99,7 +101,7 @@ void Game::processKeys(sf::Event t_event)
 
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Num1))
 		{
-			m_difficulty = 0;
+			m_difficulty = -1;
 			m_state = GAME;
 		}
 		else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Num2))
