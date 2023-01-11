@@ -14,6 +14,7 @@
 #include "Player.h"
 #include "NPC.h"
 #include "GLOBALS.h"
+#include "AI_Minimax.h"
 
 class Game
 {
@@ -33,6 +34,7 @@ private:
 	void snapBoardPieces();
 	void setupInitialPositions();
 	void render();
+	void moveNPC();
 
 	sf::RenderWindow m_window; // main SFML window
 	bool m_exitGame; // control exiting game
@@ -45,6 +47,8 @@ private:
 
 	NPC m_npc[3]; //3 sets of sized pieces
 	//NPC m_npc2[3] //For AI vs AI mode
+
+	AI_Minimax AI;
 };
 
 #endif // !GAME_HPP

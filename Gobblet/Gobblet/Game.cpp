@@ -102,7 +102,6 @@ void Game::update(sf::Time t_deltaTime)
 	{
 		m_player[i].update(m_window, m_isPlayersTurn);
 	}
-	//m_npc.update(m_isPlayersTurn);
 
 	snapBoardPieces();
 
@@ -128,6 +127,7 @@ void Game::snapBoardPieces()
 						m_player[i].m_largePiece.setPosition(m_grid.cellGrid[x][y].center.x, m_grid.cellGrid[x][y].center.y);
 						m_grid.cellGrid[x][y].IsOccupiedByPlayer = true;
 						m_isPlayersTurn = false;
+						moveNPC();
 					}
 				}
 				else if (m_grid.cellGrid[x][y].cellBody.getGlobalBounds().contains(m_player[i].m_mediumPiece.getPosition()) && !m_grid.cellGrid[x][y].IsOccupiedByNPC && !m_grid.cellGrid[x][y].IsOccupiedByPlayer)
@@ -138,6 +138,7 @@ void Game::snapBoardPieces()
 						m_player[i].m_mediumPiece.setPosition(m_grid.cellGrid[x][y].center.x, m_grid.cellGrid[x][y].center.y);
 						m_grid.cellGrid[x][y].IsOccupiedByPlayer = true;
 						m_isPlayersTurn = false;
+						moveNPC();
 					}
 				}
 				else if (m_grid.cellGrid[x][y].cellBody.getGlobalBounds().contains(m_player[i].m_smallPiece.getPosition()) && !m_grid.cellGrid[x][y].IsOccupiedByNPC && !m_grid.cellGrid[x][y].IsOccupiedByPlayer)
@@ -148,6 +149,7 @@ void Game::snapBoardPieces()
 						m_player[i].m_smallPiece.setPosition(m_grid.cellGrid[x][y].center.x, m_grid.cellGrid[x][y].center.y);
 						m_grid.cellGrid[x][y].IsOccupiedByPlayer = true;
 						m_isPlayersTurn = false;
+						moveNPC();
 					}
 				}
 				else if (m_grid.cellGrid[x][y].cellBody.getGlobalBounds().contains(m_player[i].m_tinyPiece.getPosition()) && !m_grid.cellGrid[x][y].IsOccupiedByNPC && !m_grid.cellGrid[x][y].IsOccupiedByPlayer)
@@ -158,6 +160,7 @@ void Game::snapBoardPieces()
 						m_player[i].m_tinyPiece.setPosition(m_grid.cellGrid[x][y].center.x, m_grid.cellGrid[x][y].center.y);
 						m_grid.cellGrid[x][y].IsOccupiedByPlayer = true;
 						m_isPlayersTurn = false;
+						moveNPC();
 					}
 				}
 			}
@@ -234,4 +237,19 @@ void Game::render()
 		m_npc[i].render(m_window);
 	}
 	m_window.display();
+}
+
+void Game::moveNPC()
+{
+	std::pair<int, std::pair<int, int>> move = AI.minmax(m_grid, 0 , false, -1000, 1000);
+
+	AI.finalPiece = &AI.decidePieceForMoving(m_grid, m_npc);
+
+	Cell& cell = m_grid.cellGrid[move.second.first][move.second.second];
+
+	AI.finalPiece->setPosition(cell.center);
+
+	cell.IsOccupiedByNPC = true;
+
+	m_isPlayersTurn = true;
 }
