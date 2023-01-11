@@ -8,17 +8,16 @@ class AI_Minimax
 public:
 	AI_Minimax();
 //	int minmax(Grid& t_grid, int t_height, int t_depth, int t_nodeindex, bool t_isPlayersTurn, std::vector<int> t_values, int t_alpha, int t_beta);
-	std::pair<int, std::pair<int, int>> minmax(Grid& t_grid, int t_depth, bool t_isPlayersTurn, int t_alpha, int t_beta);
+	std::pair<int, std::pair<int, int>> minmax(Grid t_grid, int t_depth, bool t_isPlayersTurn, int t_alpha, int t_beta, bool& myBool);
 	void movePiece(sf::Vector2f t_pos, Grid& t_grid, bool isPlayer);
 	void unMovePiece(sf::Vector2f t_pos, Grid& t_grid);
 	
 	sf::CircleShape& decidePieceForMoving(Grid& t_grid, NPC t_npcs[3]);
 	sf::CircleShape* finalPiece = nullptr;
+	bool hasMoved = false;
 
 private:
 	sf::Vector2f oldPos{ -1,-1 };
-	bool hasMoved = false;
-
 
 	std::vector<std::pair<int, int>> get_legal_moves(Grid& t_grid);
 	bool board_is_full(Grid& t_grid);

@@ -126,7 +126,7 @@ bool AI_Minimax::game_is_won(std::vector<std::pair<int, int>> occupied_positions
 	return game_won;
 }
 
-std::pair<int, std::pair<int, int>> AI_Minimax::minmax(Grid& t_grid, int t_depth, bool t_isPlayersTurn, int t_alpha, int t_beta)
+std::pair<int, std::pair<int, int>> AI_Minimax::minmax(Grid t_grid, int t_depth, bool t_isPlayersTurn, int t_alpha, int t_beta, bool& myBool)
 {
 	std::pair<int, int> best_move = std::make_pair(-1, -1);
 	int best_score = (t_isPlayersTurn == false) ? -1000 : 1000;
@@ -134,12 +134,18 @@ std::pair<int, std::pair<int, int>> AI_Minimax::minmax(Grid& t_grid, int t_depth
 	//if no moves left
 	if (board_is_full(t_grid) || 0 != get_board_state(t_grid))
 	{
+		myBool = true;
 		best_score = get_board_state(t_grid);
 		return std::make_pair(best_score, best_move);
 	}
 
-	std::vector<std::pair<int, int>> legal_moves = get_legal_moves(t_grid);
-	
+	std::vector<std::pair<int, int>> legal_moves;
+
+	if (!myBool) 
+	{
+		legal_moves = get_legal_moves(t_grid);
+	}
+
 	for (int i = 0; i < legal_moves.size(); i++)
 	{
 		std::pair<int, int> curr_move = legal_moves[i];
@@ -147,7 +153,7 @@ std::pair<int, std::pair<int, int>> AI_Minimax::minmax(Grid& t_grid, int t_depth
 
 		if (!t_isPlayersTurn)
 		{
-			int score = minmax(t_grid, t_depth + 1, true ,t_alpha, t_beta).first;
+			int score = minmax(t_grid, t_depth + 1, true ,t_alpha, t_beta, myBool).first;
 
 			if (best_score < score)
 			{
@@ -168,7 +174,7 @@ std::pair<int, std::pair<int, int>> AI_Minimax::minmax(Grid& t_grid, int t_depth
 		}
 		else
 		{
-			int score = minmax(t_grid, t_depth + 1, false, t_alpha, t_beta).first;
+			int score = minmax(t_grid, t_depth + 1, false, t_alpha, t_beta, myBool).first;
 
 			if (best_score > score)
 			{
@@ -187,9 +193,7 @@ std::pair<int, std::pair<int, int>> AI_Minimax::minmax(Grid& t_grid, int t_depth
 			}
 
 		}
-
-		//unMovePiece(sf::Vector2f(curr_move.first, curr_move.second), t_grid);
-
+		unMovePiece(sf::Vector2f(curr_move.first, curr_move.second), t_grid);
 	}
 
 	return std::make_pair(best_score, best_move);

@@ -251,7 +251,9 @@ void Game::render()
 
 void Game::moveNPC()
 {
-	std::pair<int, std::pair<int, int>> move = AI.minmax(m_grid, 0 , false, -1000, 1000);
+	bool myBool = false;
+
+	std::pair<int, std::pair<int, int>> move = AI.minmax(m_grid, 0 , false, -1000, 1000, myBool);
 
 	AI.finalPiece = &AI.decidePieceForMoving(m_grid, m_npc);
 
@@ -260,6 +262,6 @@ void Game::moveNPC()
 	AI.finalPiece->setPosition(cell.center);
 
 	cell.IsOccupiedByNPC = true;
-
+	AI.hasMoved = false;
 	m_isPlayersTurn = true;
 }
