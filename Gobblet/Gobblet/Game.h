@@ -15,6 +15,7 @@
 #include "NPC.h"
 #include "GLOBALS.h"
 #include "AI_Minimax.h"
+#include "Menu.h"
 
 class Game
 {
@@ -43,10 +44,14 @@ private:
 	bool m_gameWon = false;
 	bool m_gameLost = false;
 
+	int m_difficulty = 1;
+
 	sf::Font m_font;
 	sf::Text m_loseWinText;
 
+	Menu m_menu;
 	Grid m_grid;
+	gameMode m_state = MENU;
 
 	Player m_player[3]; //3 sets of sized pieces
 	//Player m_player2[3]; //For Player vs Player mode

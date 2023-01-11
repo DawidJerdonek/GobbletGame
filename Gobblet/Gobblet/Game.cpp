@@ -94,10 +94,35 @@ void Game::processEvents()
 /// <param name="t_event">key press event</param>
 void Game::processKeys(sf::Event t_event)
 {
+	if (m_state == MENU)
+	{
+
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Num1))
+		{
+			m_difficulty = 1;
+			m_state = GAME;
+		}
+		else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Num2))
+		{
+			m_difficulty = 2;
+			m_state = GAME;
+		}
+		else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Num3))
+		{
+			m_difficulty = 3;
+			m_state = GAME;
+		}
+
+	}
+	if (m_state == GAME)
+	{
+
+	}
 	if (sf::Keyboard::Escape == t_event.key.code)
 	{
 		m_exitGame = true;
 	}
+
 }
 
 /// <summary>
@@ -106,27 +131,33 @@ void Game::processKeys(sf::Event t_event)
 /// <param name="t_deltaTime">time interval per frame</param>
 void Game::update(sf::Time t_deltaTime)
 {
-	if (m_gameWon == false && m_gameLost == false)
+	if (m_state == MENU)
 	{
-		m_grid.update(m_window);
-		for (int i = 0; i < 3; i++)
+
+	}
+	if (m_state == GAME)
+	{
+		if (m_gameWon == false && m_gameLost == false)
 		{
-			m_player[i].update(m_window, m_isPlayersTurn);
+			m_grid.update(m_window);
+			for (int i = 0; i < 3; i++)
+			{
+				m_player[i].update(m_window, m_isPlayersTurn);
+			}
+
+			snapBoardPieces();
 		}
-
-		snapBoardPieces();
+		if (m_gameWon)
+		{
+			m_loseWinText.setFillColor(sf::Color::Green);
+			m_loseWinText.setString("You have WON! \n Press 'ESCAPE' to quit game");
+		}
+		else if (m_gameLost)
+		{
+			m_loseWinText.setFillColor(sf::Color::Red);
+			m_loseWinText.setString("You have been defeated! \n Press 'ESCAPE' to quit game");
+		}
 	}
-	if (m_gameWon)
-	{
-		m_loseWinText.setFillColor(sf::Color::Green);
-		m_loseWinText.setString("You have WON! \n Press 'ESCAPE' to quit game");
-	}
-	else if (m_gameLost)
-	{
-		m_loseWinText.setFillColor(sf::Color::Red);
-		m_loseWinText.setString("You have been defeated! \n Press 'ESCAPE' to quit game");
-	}
-
 	if (m_exitGame)
 	{
 		m_window.close();
@@ -343,16 +374,26 @@ void Game::setupInitialPositions()
 void Game::render()
 {
 	m_window.clear(sf::Color::Black);
-	m_grid.draw(m_window);
-	for (int i = 0; i < 3; i++)
+	if (m_state == MENU)
 	{
-		m_player[i].render(m_window);
+
+		m_menu.render(m_window);
+
 	}
-	for (int i = 0; i < 3; i++)
+
+	if (m_state == GAME)
 	{
-		m_npc[i].render(m_window);
+		m_grid.draw(m_window);
+		for (int i = 0; i < 3; i++)
+		{
+			m_player[i].render(m_window);
+		}
+		for (int i = 0; i < 3; i++)
+		{
+			m_npc[i].render(m_window);
+		}
+		m_window.draw(m_loseWinText);
 	}
-	m_window.draw(m_loseWinText);
 	m_window.display();
 }
 
